@@ -85,8 +85,8 @@ export default function HomePage() {
       <section className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
-              <div className="relative">
+            <div className="relative md:pb-12">
+              <Reveal>
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
@@ -96,13 +96,14 @@ export default function HomePage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
-                <ExperienceBadge
-                  title="17+ Years of Excellence"
-                  subtitle={`Delivering trust and luxury across the landscape since ${siteConfig.founded}.`}
-                  align="right"
-                />
-              </div>
-            </Reveal>
+              </Reveal>
+              <ExperienceBadge
+                title="17+ Years of Excellence"
+                subtitle={`Delivering trust and luxury across the landscape since ${siteConfig.founded}.`}
+                align="right"
+                className="mt-4 md:mt-0"
+              />
+            </div>
             <Reveal delay={150}>
               <div>
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-6 leading-tight">

@@ -96,8 +96,8 @@ export default function ServicesPage() {
                 </Link>
               </div>
             </Reveal>
-            <Reveal delay={150}>
-              <div className="relative">
+            <div className="relative md:pb-12">
+              <Reveal delay={150}>
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
@@ -107,14 +107,15 @@ export default function ServicesPage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
-                <ExperienceBadge
-                  title="17+"
-                  subtitle="Years of Development Excellence"
-                  align="left"
-                  centered
-                />
-              </div>
-            </Reveal>
+              </Reveal>
+              <ExperienceBadge
+                title="17+"
+                subtitle="Years of Development Excellence"
+                align="left"
+                centered
+                className="mt-4 md:mt-0"
+              />
+            </div>
           </div>
         </div>
       </section>
