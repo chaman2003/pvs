@@ -35,8 +35,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   icons: {
-    icon: '/images/favicon.png',
-    apple: '/images/logo.png',
+    icon: [{ url: '/images/favicon.png', type: 'image/png' }],
+    apple: [{ url: '/images/logo.png', type: 'image/png' }],
+    shortcut: ['/images/favicon.png'],
   },
 };
 
