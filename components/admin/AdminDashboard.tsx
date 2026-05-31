@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Input } from '@/components/ui/Input';
+import { SiteLogo } from '@/components/ui/SiteLogo';
 import { ProjectForm, type AdminProject } from '@/components/admin/ProjectForm';
 
 type Tab = 'dashboard' | 'projects' | 'inquiries' | 'newsletter';
@@ -252,7 +252,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
         <div className="max-w-md mx-auto px-4">
           <div className="bg-surface-container-lowest shadow-xl rounded-3xl p-8 border border-outline-variant/30">
             <div className="flex items-center gap-3 mb-2">
-              <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-lg" />
+              <SiteLogo size={48} priority />
               <h1 className="font-headline text-xl font-bold text-primary">Admin Sign In</h1>
             </div>
             <p className="text-on-surface-variant text-sm mb-8">
@@ -325,7 +325,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
       <nav className="fixed top-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur border-b border-outline-variant/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="Logo" width={32} height={32} className="rounded" />
+            <SiteLogo size={36} />
             <div>
               <p className="font-headline font-bold text-primary text-sm">PVS Promoters</p>
               <p className="text-xs text-on-surface-variant">Admin Center</p>
