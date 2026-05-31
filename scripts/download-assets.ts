@@ -35,6 +35,13 @@ const FILES = [
   'img77.jpg',
   'img78.jpg',
   'inner-banner-img-1.jpg',
+  'author-img1.jpg',
+  'author-img2.jpg',
+  'author-img3.jpg',
+  'author-img4.jpg',
+  'author-img5.jpg',
+  'author-img6.jpg',
+  'map-img1.png',
   'site-logo.png',
   'favicon.png',
 ];
@@ -103,6 +110,18 @@ async function main() {
   } else if (!fs.existsSync(logoPath) && fs.existsSync(path.join(OUT, 'favicon.png'))) {
     fs.copyFileSync(path.join(OUT, 'favicon.png'), logoPath);
     console.log('ok   logo.jpg (from favicon.png)');
+  }
+
+  // Copy author images to testimonials folder with SEO-friendly names
+  const testimonialDir = path.join(OUT, 'testimonials');
+  fs.mkdirSync(testimonialDir, { recursive: true });
+  for (let i = 1; i <= 6; i++) {
+    const src = path.join(OUT, `author-img${i}.jpg`);
+    const dest = path.join(testimonialDir, `author-${i}.jpg`);
+    if (fs.existsSync(src) && fs.statSync(src).size > 0) {
+      fs.copyFileSync(src, dest);
+      console.log(`ok   testimonials/author-${i}.jpg`);
+    }
   }
 
   console.log(`\nDone: ${ok} ok, ${fail} failed`);

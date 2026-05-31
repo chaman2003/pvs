@@ -56,11 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'WebSite',
               name: siteConfig.name,
               url: siteConfig.url,
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: `${siteConfig.url}/projects?q={search_term_string}`,
-                'query-input': 'required name=search_term_string',
-              },
             },
           ]}
         />

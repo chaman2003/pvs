@@ -31,6 +31,11 @@ export async function getProjectBySlug(slug: string): Promise<IProject | null> {
   return seedProjects.find((p) => p.id === slug) ?? null;
 }
 
+export async function getFeaturedProjects(): Promise<IProject[]> {
+  const projects = await getAllProjects();
+  return projects.filter((p) => p.featured);
+}
+
 export async function getProjectSlugs(): Promise<string[]> {
   const projects = await getAllProjects();
   return projects.map((p) => p.id);

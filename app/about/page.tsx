@@ -17,9 +17,9 @@ import { Reveal } from '@/components/motion/Reveal';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata = createPageMetadata({
-  title: 'About Us',
+  title: 'About PVS Promoters | Coco Farm Land Hosur & Bangalore',
   description:
-    'PVS Promoters — crafting legacies and defining horizons in premium real estate since 2009. Integrity, innovation, and uncompromising standards.',
+    'About PVS Promoters — 17+ years crafting coco farmland and premium real estate near Hosur and Bangalore. 240+ projects, 11,000+ satisfied families since 2009.',
   path: '/about',
 });
 

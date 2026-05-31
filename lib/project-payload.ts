@@ -31,6 +31,14 @@ export function buildProjectPayload(data: ProjectInput) {
     videos,
     videoFiles,
     youtubeId: data.youtubeId || videos[0] || '',
+    ...(data.seoTitle || data.seoDescription
+      ? {
+          seo: {
+            title: data.seoTitle || title,
+            description: data.seoDescription || data.description || '',
+          },
+        }
+      : {}),
   };
 }
 
@@ -76,6 +84,13 @@ export function buildProjectUpdatePayload(data: ProjectInput) {
 
   if (data.videoFiles !== undefined) {
     payload.videoFiles = data.videoFiles.filter(Boolean);
+  }
+
+  if (data.seoTitle !== undefined || data.seoDescription !== undefined) {
+    payload.seo = {
+      title: data.seoTitle ?? '',
+      description: data.seoDescription ?? '',
+    };
   }
 
   return payload;

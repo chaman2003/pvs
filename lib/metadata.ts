@@ -5,12 +5,15 @@ export function createPageMetadata({
   title,
   description,
   path = '/',
+  ogImage,
 }: {
   title: string;
   description: string;
   path?: string;
+  ogImage?: string;
 }): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const imageUrl = ogImage ?? `${siteConfig.url}/opengraph-image`;
   return {
     title,
     description,
@@ -22,12 +25,13 @@ export function createPageMetadata({
       siteName: siteConfig.name,
       locale: 'en_IN',
       type: 'website',
-      images: [{ url: `${siteConfig.url}/images/logo.png`, width: 400, height: 400 }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [imageUrl],
     },
   };
 }
@@ -37,8 +41,18 @@ export const organizationJsonLd = {
   '@type': 'RealEstateAgent',
   name: siteConfig.name,
   url: siteConfig.url,
+  logo: `${siteConfig.url}/images/logo.png`,
+  image: `${siteConfig.url}/images/coco-farm-clubhouse-aerial.png`,
   telephone: siteConfig.phone,
   email: siteConfig.email,
+  foundingDate: '2009',
+  areaServed: ['Hosur', 'Bangalore', 'Tamil Nadu'],
+  sameAs: Object.values(siteConfig.social).filter((u) => u && !u.endsWith('instagram.com/')),
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.mapCoordinates.lat,
+    longitude: siteConfig.mapCoordinates.lng,
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: siteConfig.address,

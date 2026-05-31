@@ -9,8 +9,9 @@ import { siteConfig } from '@/lib/site-config';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = createPageMetadata({
-  title: 'FAQ',
-  description: `Frequently asked questions about ${siteConfig.name} — projects, bookings, site visits, documentation, and support in Hosur.`,
+  title: 'Farmland FAQ | Managed Farmland Near Bangalore',
+  description:
+    'FAQ on managed farmland near Bangalore, coco farmland Hosur, agricultural land Tamil Nadu, booking procedure, water source, and legal requirements.',
   path: '/faq',
 });
 

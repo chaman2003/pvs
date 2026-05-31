@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { IProject } from '@/lib/models/Project';
 import { ContactForm } from '@/components/forms/ContactForm';
-import { ImageCarousel } from '@/components/ui/ImageCarousel';
-import { VideoEmbed } from '@/components/ui/VideoEmbed';
+import { ProjectGallery } from '@/components/projects/ProjectGallery';
+import { ProjectVideoGrid } from '@/components/projects/ProjectVideoGrid';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { HeroBackground } from '@/components/motion/HeroBackground';
@@ -31,7 +31,7 @@ export function ProjectDetailView({
         <HeroBackground>
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} managed farmland ${project.location} — PVS Promoters hero`}
             fill
             className="object-cover brightness-[0.5] hover-scale-img"
             priority
@@ -103,7 +103,7 @@ export function ProjectDetailView({
           <Reveal delay={100}>
             <div>
               <h2 className="font-headline text-xl font-bold text-primary mb-4">Project Gallery</h2>
-              <ImageCarousel images={galleryImages} />
+              <ProjectGallery images={galleryImages} />
             </div>
           </Reveal>
 
@@ -153,16 +153,32 @@ export function ProjectDetailView({
           {(project.videos?.length || project.videoFiles?.length || project.youtubeId) && (
             <div className="space-y-6">
               <h2 className="font-headline text-xl font-bold text-primary">Project Videos</h2>
-              {[
-                ...(project.videos?.length
-                  ? project.videos
-                  : project.youtubeId
-                    ? [project.youtubeId]
-                    : []),
-                ...(project.videoFiles || []),
-              ].map((src, i) => (
-                <VideoEmbed key={`${src}-${i}`} videoId={src} title={`${project.title} video ${i + 1}`} />
-              ))}
+              <ProjectVideoGrid
+                videos={[
+                  ...(project.videos?.length
+                    ? project.videos
+                    : project.youtubeId
+                      ? [project.youtubeId]
+                      : []),
+                  ...(project.videoFiles || []),
+                ]}
+                title={project.title}
+              />
+            </div>
+          )}
+
+          {project.timeline && (
+            <div>
+              <h2 className="font-headline text-xl font-bold text-primary">Project Timeline</h2>
+              <div className="mt-4 p-6 rounded-2xl bg-surface-container border border-outline-variant/20">
+                <p className="text-sm text-on-surface-variant">
+                  <strong className="text-primary">Start:</strong> {project.timeline.start}
+                </p>
+                <p className="text-sm text-on-surface-variant mt-2">
+                  <strong className="text-primary">Expected completion:</strong>{' '}
+                  {project.timeline.completion}
+                </p>
+              </div>
             </div>
           )}
         </div>

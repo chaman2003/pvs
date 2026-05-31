@@ -21,6 +21,48 @@ const { name, phoneDisplay, email, address, founded } = siteConfig;
 export const faqItems: FaqItem[] = [
   {
     category: 'general',
+    question: 'What are the benefits of owning a managed farmland?',
+    answer:
+      'Managed farmland near Bangalore offers weekend retreats, organic farming opportunities, appreciation potential, and gated community amenities including security, water supply, internal roads, and plantation support. PVS Promoters provides end-to-end management so you enjoy farmland ownership without daily maintenance burden.',
+  },
+  {
+    category: 'legal',
+    question: 'Can anyone buy agricultural land in Tamil Nadu?',
+    answer:
+      'Tamil Nadu has restrictions under Section 79A and 79B of the Tamil Nadu Land Reforms Act. Non-agriculturists may require special permissions or must meet eligibility criteria. PVS Promoters guides buyers through legal verification and documentation to ensure compliant purchases.',
+  },
+  {
+    category: 'projects',
+    question: 'What is the minimum area of plot one can purchase?',
+    answer:
+      'The minimum plot size is typically 10 guntas (approximately 1,200 sq ft) depending on the project. Contact our sales team for current availability and dimensions at each location including Pathakotta, Shoolagiri, and other PVS projects.',
+  },
+  {
+    category: 'projects',
+    question: 'What is the source of water in the farmland?',
+    answer:
+      'Our coco farmland projects include borewells, sustainable water management systems, and in some locations access to natural water sources. Water availability is verified during site visits — ask our team for project-specific details.',
+  },
+  {
+    category: 'projects',
+    question: 'What safety precautions are taken around the farm houses?',
+    answer:
+      'All PVS gated community farmland projects include 24/7 CCTV surveillance, trained security staff, gated entry points, and well-lit internal roads. Safety is a core amenity across Pathakotta, Shoolagiri, and all managed farmland developments.',
+  },
+  {
+    category: 'booking',
+    question: 'What is the booking procedure for farmland?',
+    answer:
+      'Select your plot during a site visit, pay 10% as booking advance, complete the sale agreement, and proceed to registration within approximately 35 days. PVS Promoters assists with 11E clearance and all documentation through registration at the sub-registrar office.',
+  },
+  {
+    category: 'general',
+    question: 'What are the benefits of investing in a farmland project?',
+    answer:
+      'Farmland investment near Hosur and Bangalore offers capital appreciation, rental income potential, tax benefits on agricultural land, a peaceful weekend home, and diversification from traditional financial instruments. Coco farmland with managed plantation adds recurring yield potential.',
+  },
+  {
+    category: 'general',
     question: 'What is PVS Promoters?',
     answer: `${name} is a premium real estate developer based in Hosur, Tamil Nadu. Since ${founded}, we have delivered residential layouts, commercial plots, and managed farmland projects across Tamil Nadu with a focus on transparency, quality infrastructure, and lifelong customer support.`,
   },

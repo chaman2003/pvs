@@ -25,7 +25,7 @@ export const siteConfig = {
     '#79/B, 1st Floor, Manjunatha Complex, Opp-Seventhday School, Appavu Nagar, Thally Road, Hosur - 635109',
   whatsapp: '919600795354',
   founded: 2009,
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://pvspromoters.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://pvs-promoters.com',
   mapCoordinates: officeCoordinates,
   mapDirectionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${officeCoordinates.lat},${officeCoordinates.lng}&destination_place_name=${encodeURIComponent(officeMapLabel)}`,
   mapEmbedUrl: `https://maps.google.com/maps?q=${officeCoordinates.lat},${officeCoordinates.lng}&hl=en&z=17&output=embed`,
@@ -42,6 +42,8 @@ export const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/projects', label: 'Projects' },
   { href: '/services', label: 'Services' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/guides', label: 'Guides' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 

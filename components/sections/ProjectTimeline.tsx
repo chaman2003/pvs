@@ -1,11 +1,11 @@
-import { timelineEvents } from '@/content/testimonials';
+import { timelineEvents } from '@/content/timeline';
 import { SectionHead } from '@/components/ui/SectionHead';
 
 export function ProjectTimeline() {
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <SectionHead kicker="Our Journey" title="Company Timeline" />
+        <SectionHead kicker="Our Journey" title="PVS Promoters History" />
         <div className="relative border-l-2 border-secondary-container/50 ml-4 md:ml-8 space-y-10">
           {timelineEvents.map((event) => (
             <div key={event.year} className="relative pl-8 md:pl-12">

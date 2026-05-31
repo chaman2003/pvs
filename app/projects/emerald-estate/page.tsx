@@ -1,20 +1,15 @@
-import { ProjectDetailView } from '@/components/projects/ProjectDetailView';
-import { getAllProjects, getProjectBySlug } from '@/lib/projects';
-import { createPageMetadata } from '@/lib/metadata';
-import { notFound } from 'next/navigation';
-
-export const metadata = createPageMetadata({
-  title: 'The Emerald Estate',
-  description: 'Luxury villa plots at Emerald Estate by PVS Promoters.',
-  path: '/projects/emerald-estate',
-});
+import { getProjectBySlug } from '@/lib/projects';
+import { getProjectPageMetadata } from '@/lib/seo/project-metadata';
+import { ProjectPageShell } from '@/components/projects/ProjectPageShell';
 
 export const revalidate = 60;
 
-export default async function EmeraldEstatePage() {
+export async function generateMetadata() {
   const project = await getProjectBySlug('emerald-estate');
-  if (!project) notFound();
-  const allProjects = await getAllProjects();
-  const related = allProjects.filter((p) => p.id !== project.id && p.featured).slice(0, 3);
-  return <ProjectDetailView project={project} related={related} />;
+  if (!project) return {};
+  return getProjectPageMetadata(project);
+}
+
+export default function EmeraldEstatePage() {
+  return <ProjectPageShell slug="emerald-estate" />;
 }

@@ -7,8 +7,8 @@ import { siteConfig } from '@/lib/site-config';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = createPageMetadata({
-  title: 'Contact Us',
-  description: `Contact PVS Promoters at ${siteConfig.phoneDisplay} or ${siteConfig.email}.`,
+  title: 'Contact PVS Promoters | Farmland Hosur & Bangalore',
+  description: `Contact PVS Promoters to buy farm land in Bangalore and Hosur. Call ${siteConfig.phoneDisplay}, email ${siteConfig.email}, or book a site visit.`,
   path: '/contact',
 });
 

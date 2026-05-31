@@ -22,6 +22,7 @@ export interface AdminProject {
   videoFiles?: string[];
   youtubeId?: string;
   details?: { area?: string; totalArea?: string };
+  seo?: { title?: string; description?: string };
 }
 
 type NotifyFn = (text: string, type?: 'success' | 'error') => void;
@@ -35,6 +36,8 @@ const emptyForm = {
   status: 'Available',
   category: 'Residential',
   description: '',
+  seoTitle: '',
+  seoDescription: '',
 };
 
 export function ProjectForm({
@@ -69,6 +72,8 @@ export function ProjectForm({
         status: initial.status || 'Available',
         category: initial.category || 'Residential',
         description: initial.description || '',
+        seoTitle: initial.seo?.title || '',
+        seoDescription: initial.seo?.description || '',
       });
       const imgs =
         initial.gallery?.length ? initial.gallery : initial.image ? [initial.image] : [];
@@ -252,6 +257,31 @@ export function ProjectForm({
           value={form.description}
           onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
         />
+      </div>
+
+      <div className="md:col-span-2 border-t border-outline-variant/20 pt-4 mt-2">
+        <h3 className="font-headline font-bold text-primary mb-3">SEO Settings</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="md:col-span-2">
+            <label className="block text-sm font-bold mb-1">SEO Title</label>
+            <Input
+              name="seoTitle"
+              placeholder="Page title for search engines (≤60 chars)"
+              value={form.seoTitle}
+              onChange={(e) => setForm((f) => ({ ...f, seoTitle: e.target.value }))}
+            />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-bold mb-1">SEO Description</label>
+            <Textarea
+              name="seoDescription"
+              rows={2}
+              placeholder="Meta description for search results (≤160 chars)"
+              value={form.seoDescription}
+              onChange={(e) => setForm((f) => ({ ...f, seoDescription: e.target.value }))}
+            />
+          </div>
+        </div>
       </div>
 
       <ProjectMediaEditor

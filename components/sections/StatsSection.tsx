@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { homeStats } from '@/content/testimonials';
+import { homeStats, statsSectionHead } from '@/content/trust-stats';
 import { Reveal } from '@/components/motion/Reveal';
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -47,6 +47,14 @@ export function StatsSection() {
     <section className="py-20 bg-primary/5">
       <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="text-center mb-12">
+            <p className="text-secondary font-bold uppercase tracking-widest text-sm">{statsSectionHead.kicker}</p>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mt-2">
+              {statsSectionHead.title}{' '}
+              <span className="text-secondary">{statsSectionHead.titleAccent}</span>
+            </h2>
+            <p className="text-on-surface-variant mt-3">{statsSectionHead.subtitle}</p>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {homeStats.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 80}>

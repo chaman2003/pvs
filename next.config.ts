@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'pvspromoters.com' },
+      { protocol: 'https', hostname: 'pvs-promoters.com' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: '**.googleusercontent.com' },
     ],
@@ -56,6 +57,29 @@ const nextConfig: NextConfig = {
         destination: '/projects/shoolagiri',
         permanent: true,
       },
+      { source: '/about.html', destination: '/about', permanent: true },
+      { source: '/contact.html', destination: '/contact', permanent: true },
+      { source: '/faq.html', destination: '/faq', permanent: true },
+      { source: '/gallery.html', destination: '/projects', permanent: true },
+      { source: '/testimonial-page.html', destination: '/testimonials', permanent: true },
+      { source: '/policy.html', destination: '/privacy-policy', permanent: true },
+      { source: '/index.html', destination: '/', permanent: true },
+      {
+        source: '/coco-farmland-projects-Pathakotta.html',
+        destination: '/projects/phase-1',
+        permanent: true,
+      },
+      {
+        source: '/coco-farmland-projects-Pathakotta-2.html',
+        destination: '/projects/phase-2',
+        permanent: true,
+      },
+      {
+        source: '/coco-farmland-projects-shoolagiri.html',
+        destination: '/projects/shoolagiri',
+        permanent: true,
+      },
+      { source: '/:path*.html', destination: '/:path*', permanent: true },
     ];
   },
 };

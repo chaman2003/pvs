@@ -7,8 +7,9 @@ import { HeroText } from '@/components/motion/HeroText';
 import { getAllProjects } from '@/lib/projects';
 
 export const metadata = createPageMetadata({
-  title: 'Projects',
-  description: 'Browse residential, commercial, and farmland projects by PVS Promoters in Hosur.',
+  title: 'Coco Farmland Projects Hosur & Bangalore | PVS Promoters',
+  description:
+    'Browse coco farmland projects near Hosur and Bangalore — Phase-1, Phase-2, Shoolagiri, Emerald Estate and more. Managed farmland with clear titles.',
   path: '/projects',
 });
 
