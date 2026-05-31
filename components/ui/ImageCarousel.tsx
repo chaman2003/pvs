@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type CarouselImage = { src: string; alt: string };
@@ -10,20 +10,30 @@ type CarouselImage = { src: string; alt: string };
 export function ImageCarousel({
   images,
   className,
+  onOpenFullscreen,
 }: {
   images: CarouselImage[];
   className?: string;
+  onOpenFullscreen?: (index: number) => void;
 }) {
   const [index, setIndex] = useState(0);
   const count = images.length;
 
-  const prev = useCallback(() => {
-    setIndex((i) => (i === 0 ? count - 1 : i - 1));
-  }, [count]);
+  const prev = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      setIndex((i) => (i === 0 ? count - 1 : i - 1));
+    },
+    [count]
+  );
 
-  const next = useCallback(() => {
-    setIndex((i) => (i === count - 1 ? 0 : i + 1));
-  }, [count]);
+  const next = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      setIndex((i) => (i === count - 1 ? 0 : i + 1));
+    },
+    [count]
+  );
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -47,6 +57,19 @@ export function ImageCarousel({
           sizes="(max-width: 768px) 100vw, 66vw"
           priority={index === 0}
         />
+        {onOpenFullscreen && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenFullscreen(index);
+            }}
+            className="absolute top-3 right-3 z-10 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
+            aria-label="View fullscreen"
+          >
+            <Maximize2 className="h-5 w-5" />
+          </button>
+        )}
       </div>
       {count > 1 && (
         <>
@@ -71,7 +94,10 @@ export function ImageCarousel({
               <button
                 key={i}
                 type="button"
-                onClick={() => setIndex(i)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIndex(i);
+                }}
                 className={cn(
                   'h-2 rounded-full transition-all',
                   i === index ? 'w-6 bg-primary' : 'w-2 bg-outline-variant/50'

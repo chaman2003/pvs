@@ -10,22 +10,18 @@ export function ProjectGallery({
 }: {
   images: { src: string; alt: string }[];
 }) {
-  const [index, setIndex] = useState(-1);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIndex(0)}
-        className="w-full text-left"
-        aria-label="Open gallery lightbox"
-      >
-        <ImageCarousel images={images} />
-      </button>
+      <ImageCarousel
+        images={images}
+        onOpenFullscreen={(index) => setLightboxIndex(index)}
+      />
       <Lightbox
-        open={index >= 0}
-        close={() => setIndex(-1)}
-        index={index}
+        open={lightboxIndex >= 0}
+        close={() => setLightboxIndex(-1)}
+        index={lightboxIndex}
         slides={images.map((img) => ({ src: img.src, alt: img.alt }))}
       />
     </>
