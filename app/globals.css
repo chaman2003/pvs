@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-surface-bright: #f7f9fb;
+  --color-secondary-fixed: #ffdf9f;
+  --color-on-error: #ffffff;
+  --color-primary-fixed-dim: #95d3ba;
+  --color-error-container: #ffdad6;
+  --color-on-primary-fixed-variant: #0b513d;
+  --color-surface-container-highest: #e0e3e5;
+  --color-surface-container-low: #f2f4f6;
+  --color-primary-fixed: #b0f0d6;
+  --color-primary-container: #064e3b;
+  --color-on-surface-variant: #404944;
+  --color-primary: #003527;
+  --color-error: #ba1a1a;
+  --color-secondary-container: #ffc329;
+  --color-on-surface: #191c1e;
+  --color-secondary: #795900;
+  --color-surface-tint: #2b6954;
+  --color-outline: #707974;
+  --color-inverse-on-surface: #eff1f3;
+  --color-surface: #f7f9fb;
+  --color-surface-variant: #e0e3e5;
+  --color-surface-container: #eceef0;
+  --color-surface-container-lowest: #ffffff;
+  --color-background: #f7f9fb;
+  --color-on-secondary-container: #6f5100;
+  --color-outline-variant: #bfc9c3;
+  --color-on-primary: #ffffff;
+  --color-whatsapp: #25d366;
+  --font-headline: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+}
+
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.glass {
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.editorial-gradient {
+  background: linear-gradient(135deg, #003527 0%, #064e3b 100%);
+}
+
+input,
+textarea,
+select {
+  color: var(--color-on-surface);
+  background: var(--color-surface-container-lowest);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-outline);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* GPU-safe scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity 700ms ease-out,
+    transform 700ms ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero background slow zoom */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 20s ease-out forwards;
+  will-change: transform;
+}
+
+/* Card hover lift */
+.hover-lift {
+  transition:
+    transform 300ms ease-out,
+    box-shadow 300ms ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
+}
+
+/* Image hover scale */
+.hover-scale-img {
+  transition: transform 500ms ease-out;
+  will-change: transform;
+}
+
+.group:hover .hover-scale-img {
+  transform: scale(1.05);
+}
+
+/* Floating contact gentle pulse */
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Hero text quick fade on load (not scroll-triggered) */
+@keyframes fade-in-hero {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-hero {
+  animation: fade-in-hero 300ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-hero-zoom,
+  .animate-gentle-pulse,
+  .animate-fade-in-hero {
+    animation: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .group:hover .hover-scale-img {
+    transform: none;
+  }
+}
