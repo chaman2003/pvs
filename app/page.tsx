@@ -46,7 +46,7 @@ export default function HomePage() {
       <section className="relative min-h-[70vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
           <Image
-            src="/images/enhanced/home-hero-1920w.webp"
+            src="/images/enhanced/green-hills-sunset-1920w.webp"
             alt="PVS Promoters — premium farmland and residential projects at sunset"
             fill
             priority
@@ -89,7 +89,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/enhanced/img24-1080w.webp"
+                    src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
                     alt="PVS Promoters project showcase"
                     fill
                     className="object-cover hover-scale-img"

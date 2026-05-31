@@ -22,7 +22,7 @@ export default async function ProjectsPage() {
       <section className="relative h-[40vh] min-h-[300px] max-h-[90vh] overflow-hidden">
         <HeroBackground>
           <Image
-            src="/images/enhanced/gallery-img3-1920w.webp"
+            src="/images/enhanced/coco-farm-aerial-playground-1920w.webp"
             alt="Projects"
             fill
             className="object-cover brightness-[0.45]"

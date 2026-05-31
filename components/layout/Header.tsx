@@ -35,7 +35,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt="PVS Promoters"
               width={40}
               height={40}

@@ -6,12 +6,14 @@ const ROOT = path.join(__dirname, '../public/images');
 const OUT = path.join(ROOT, 'enhanced');
 
 const TARGETS = [
-  'home-hero.png',
-  'img24.jpg',
-  'gallery-img13.jpg',
-  'gallery-img1.jpg',
-  'gallery-img3.jpg',
-  'inner-banner-img-1.jpg',
+  'green-hills-sunset.png',
+  'temple-river-aerial.png',
+  'coco-farm-aerial-playground.png',
+  'site-earthworks-retaining-wall.png',
+  'coco-farm-clubhouse-aerial.png',
+  'amenity-hub-pool-aerial.png',
+  'paddy-fields-aerial.png',
+  'plot-division-top-down.png',
 ];
 
 const WIDTHS = [640, 1080, 1920];
@@ -41,19 +43,6 @@ async function enhanceImage(filename: string) {
       .toFile(outPath);
 
     console.log(`✓ ${outName} (${targetWidth}px)`);
-  }
-
-  // Primary fallback at largest practical size for pages referencing {name}-1920w or -1080w
-  const primaryWidth = Math.min(1920, sourceWidth);
-  const primaryName = `${baseName}-${primaryWidth >= 1080 ? 1920 : primaryWidth >= 640 ? 1080 : 640}w.webp`;
-  const primaryPath = path.join(OUT, primaryName);
-  if (!fs.existsSync(primaryPath)) {
-    await sharp(inputPath)
-      .rotate()
-      .resize(primaryWidth, undefined, { fit: 'inside', withoutEnlargement: true })
-      .sharpen({ sigma: 0.8 })
-      .webp({ quality: 85 })
-      .toFile(primaryPath);
   }
 }
 

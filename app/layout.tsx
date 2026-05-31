@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   icons: {
-    icon: '/images/logo.jpg',
-    apple: '/images/logo.jpg',
+    icon: '/images/favicon.png',
+    apple: '/images/logo.png',
   },
 };
 

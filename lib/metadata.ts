@@ -22,7 +22,7 @@ export function createPageMetadata({
       siteName: siteConfig.name,
       locale: 'en_IN',
       type: 'website',
-      images: [{ url: `${siteConfig.url}/images/logo.jpg`, width: 400, height: 400 }],
+      images: [{ url: `${siteConfig.url}/images/logo.png`, width: 400, height: 400 }],
     },
     twitter: {
       card: 'summary_large_image',

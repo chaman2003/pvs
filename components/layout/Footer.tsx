@@ -9,7 +9,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <Image src="/images/logo.jpg" alt="Logo" width={48} height={48} className="rounded-lg" />
+            <Image src="/images/logo.png" alt="Logo" width={48} height={48} className="rounded-lg" />
             <div>
               <p className="font-headline font-bold text-lg">{siteConfig.name}</p>
               <p className="text-secondary-container text-sm">{siteConfig.tagline}</p>

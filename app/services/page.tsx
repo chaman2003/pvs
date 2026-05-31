@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <section className="relative min-h-[60vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
           <Image
-            src="/images/enhanced/gallery-img13-1920w.webp"
+            src="/images/enhanced/site-earthworks-retaining-wall-1920w.webp"
             alt="Expert real estate services by PVS Promoters"
             fill
             priority
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               <div className="relative">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/enhanced/gallery-img1-1080w.webp"
+                    src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
                     alt="Property development by PVS Promoters"
                     fill
                     className="object-cover hover-scale-img"
@@ -125,7 +125,7 @@ export default function ServicesPage() {
             <Reveal>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl lg:order-1">
                 <Image
-                  src="/images/enhanced/img24-1080w.webp"
+                  src="/images/enhanced/paddy-fields-aerial-1080w.webp"
                   alt="Premium land sales by PVS Promoters"
                   fill
                   className="object-cover hover-scale-img"
@@ -212,7 +212,7 @@ export default function ServicesPage() {
             <Reveal delay={150}>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/enhanced/gallery-img3-1080w.webp"
+                  src="/images/enhanced/plot-division-top-down-1080w.webp"
                   alt="Real estate consultation by PVS Promoters"
                   fill
                   className="object-cover hover-scale-img"

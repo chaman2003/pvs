@@ -1,14 +1,14 @@
 [
-  { "src": "https://pvspromoters.com/assets/images/gallery-img1.jpg", "alt": "PVS Promoters project aerial view" },
-  { "src": "https://pvspromoters.com/assets/images/gallery-img2.jpg", "alt": "Farmland development" },
-  { "src": "https://pvspromoters.com/assets/images/gallery-img3.jpg", "alt": "Gated community entrance" },
-  { "src": "https://pvspromoters.com/assets/images/gallery-img4.jpg", "alt": "Plot layout overview" },
-  { "src": "https://pvspromoters.com/assets/images/img18.jpg", "alt": "Coconut plantation" },
-  { "src": "https://pvspromoters.com/assets/images/img19.jpg", "alt": "Site progress" },
-  { "src": "https://pvspromoters.com/assets/images/img20.jpg", "alt": "Residential plots" },
-  { "src": "https://pvspromoters.com/assets/images/img21.jpg", "alt": "Community amenities" },
-  { "src": "https://pvspromoters.com/assets/images/img22.jpg", "alt": "Landscape view" },
-  { "src": "https://pvspromoters.com/assets/images/img23.jpg", "alt": "Project signage" },
-  { "src": "https://pvspromoters.com/assets/images/img24.jpg", "alt": "Sunset at farmland" },
-  { "src": "https://pvspromoters.com/assets/images/gallery-img5.jpg", "alt": "Team site visit" }
+  { "src": "/images/coco-farm-clubhouse-aerial.png", "alt": "PVS Promoters coco farmland aerial view" },
+  { "src": "/images/farm-project-entrance-aerial.png", "alt": "Farmland development entrance" },
+  { "src": "/images/garden-city-aerial-overview.png", "alt": "Gated community layout overview" },
+  { "src": "/images/emerald-estate-landscape-aerial.png", "alt": "Emerald Estate landscape" },
+  { "src": "/images/site-road-construction-aerial.png", "alt": "Site road construction progress" },
+  { "src": "/images/residential-layout-aerial.png", "alt": "Residential plot layout" },
+  { "src": "/images/amenity-hub-pool-aerial.png", "alt": "Community pool and amenities" },
+  { "src": "/images/temple-river-aerial.png", "alt": "Scenic landscape near project site" },
+  { "src": "/images/paddy-fields-aerial.png", "alt": "Green farmland surroundings" },
+  { "src": "/images/plot-70a-marker.png", "alt": "Plot marker on cleared site" },
+  { "src": "/images/community-swimming-pool.png", "alt": "Community swimming pool" },
+  { "src": "/images/green-hills-sunset.png", "alt": "Hills and sunset near Hosur" }
 ]

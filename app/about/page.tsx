@@ -62,7 +62,7 @@ export default function AboutPage() {
       <section className="relative min-h-[70vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
           <Image
-            src="/images/enhanced/img24-1920w.webp"
+            src="/images/enhanced/temple-river-aerial-1920w.webp"
             alt="PVS Promoters — premium real estate development"
             fill
             priority
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/enhanced/gallery-img13-1080w.webp"
+                    src="/images/enhanced/amenity-hub-pool-aerial-1080w.webp"
                     alt="PVS Promoters projects and team"
                     fill
                     className="object-cover hover-scale-img"
