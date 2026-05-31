@@ -14,7 +14,6 @@ import { ExperienceBadge } from '@/components/ui/ExperienceBadge';
 import { HeroBackground } from '@/components/motion/HeroBackground';
 import { HeroText } from '@/components/motion/HeroText';
 import { Reveal } from '@/components/motion/Reveal';
-import { AmenitiesCarousel } from '@/components/sections/AmenitiesCarousel';
 import { HomeGallery } from '@/components/sections/HomeGallery';
 import { siteConfig } from '@/lib/site-config';
 
@@ -189,8 +188,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <AmenitiesCarousel />
 
       <HomeGallery />
 

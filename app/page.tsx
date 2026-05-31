@@ -5,7 +5,6 @@ import { HeroBackground } from '@/components/motion/HeroBackground';
 import { HeroText } from '@/components/motion/HeroText';
 import { HomeAbout } from '@/components/sections/HomeAbout';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
-import { AmenitiesCarousel } from '@/components/sections/AmenitiesCarousel';
 import { TestimonialsPreview } from '@/components/sections/TestimonialsPreview';
 import { homeHero } from '@/content/home-sections';
 import { getFeaturedProjects } from '@/lib/projects';
@@ -63,7 +62,6 @@ export default async function HomePage() {
 
       <HomeAbout />
       <FeaturedProjects projects={featured} />
-      <AmenitiesCarousel />
       <TestimonialsPreview />
     </>
   );
