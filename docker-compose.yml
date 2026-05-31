@@ -28,6 +28,7 @@ services:
       - "3000:3000"
     environment:
       MONGO_URI: mongodb://mongodb:27017/pvs_promoters
+      DATA_DIR: /app/data
       ADMIN_USERNAME: ${ADMIN_USERNAME:-pvs-promoters}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-pvs-promoters@2026}
       JWT_SECRET: ${JWT_SECRET:-change-this-to-a-long-random-string}
@@ -35,6 +36,7 @@ services:
       NODE_ENV: production
     volumes:
       - uploads_data:/app/public/uploads
+      - app_data:/app/data
     depends_on:
       mongodb:
         condition: service_healthy
@@ -42,3 +44,4 @@ services:
 volumes:
   mongo_data:
   uploads_data:
+  app_data:

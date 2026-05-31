@@ -22,7 +22,10 @@ export function ContactForm({ subjectDefault = 'General Enquiry' }: { subjectDef
         body: JSON.stringify(data),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json.error?.message || 'Failed to submit');
+      if (!res.ok) {
+        const err = json.error;
+        throw new Error(typeof err === 'string' ? err : 'Failed to submit');
+      }
       setStatus('success');
       setMessage('Thank you! We will contact you shortly.');
       form.reset();
