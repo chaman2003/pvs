@@ -26,13 +26,11 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     environment:
-      MONGO_URI: mongodb://mongodb:27017/pvs_promoters
+      MONGO_URI: ${MONGO_URI:-mongodb://mongodb:27017/pvs_promoters}
       DATA_DIR: /app/data
-      ADMIN_USERNAME: ${ADMIN_USERNAME:-pvs-promoters}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-pvs-promoters@2026}
-      JWT_SECRET: ${JWT_SECRET:-change-this-to-a-long-random-string}
-      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
       NODE_ENV: production
     volumes:
       - uploads_data:/app/public/uploads
