@@ -361,9 +361,12 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
 
       <div className="max-w-7xl mx-auto px-4 py-8 pt-36">
         {dbHealthy === false && (
-          <div className="mb-6 rounded-2xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error">
-            MongoDB is unavailable. Start MongoDB, verify <code className="font-mono">MONGO_URI</code>, then run{' '}
-            <code className="font-mono">npm run seed</code> to import projects.
+          <div className="mb-6 rounded-xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error">
+            MongoDB is offline. Public pages still show seeded projects, but admin edits and inquiries need a
+            database. In Docker, set{' '}
+            <code className="font-mono text-xs">MONGO_URI=mongodb://mongodb:27017/pvs_promoters</code> in{' '}
+            <code className="font-mono text-xs">.env</code>, then run{' '}
+            <code className="font-mono text-xs">docker compose up -d</code> (web + mongodb).
           </div>
         )}
 

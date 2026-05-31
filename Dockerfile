@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/root/.npm \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY package.json package-lock.json next.config.ts tsconfig.json postcss.config.mjs eslint.config.mjs next-env.d.ts middleware.ts ./
+COPY package.json package-lock.json next.config.ts tsconfig.json postcss.config.mjs eslint.config.mjs next-env.d.ts middleware.ts instrumentation.ts ./
 COPY app ./app
 COPY components ./components
 COPY hooks ./hooks

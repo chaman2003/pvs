@@ -1,20 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireDatabaseConnection } from '@/lib/db/require-db';
 import { Project } from '@/lib/models/Project';
-import { isAdminRequest, requireAdmin } from '@/lib/api-auth';
+import { requireAdmin } from '@/lib/api-auth';
 import { projectAddSchema } from '@/lib/validators/project';
 import { buildProjectPayload } from '@/lib/project-payload';
 import { getAllProjects } from '@/lib/projects';
 
 export async function GET(request: NextRequest) {
-  if (isAdminRequest(request)) {
-    const dbError = await requireDatabaseConnection();
-    if (dbError) return dbError;
-
-    const projects = await Project.find().lean().sort({ title: 1 });
-    return NextResponse.json({ success: true, data: projects });
-  }
-
   const projects = await getAllProjects();
   return NextResponse.json({ success: true, data: projects });
 }

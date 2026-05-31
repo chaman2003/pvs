@@ -4,8 +4,8 @@ import { Project, type IProject } from '@/lib/models/Project';
 import { seedProjects } from '@/content/seed-projects';
 
 export async function getAllProjects(): Promise<IProject[]> {
-  await connectDB();
   try {
+    await connectDB();
     const projects = await Project.find().lean();
     if (projects.length > 0) return projects as IProject[];
   } catch {
@@ -15,8 +15,8 @@ export async function getAllProjects(): Promise<IProject[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<IProject | null> {
-  await connectDB();
   try {
+    await connectDB();
     let project = null;
     if (mongoose.Types.ObjectId.isValid(slug)) {
       project = await Project.findById(slug).lean();
