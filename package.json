@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed": "tsx scripts/seed-db.ts",
     "download-assets": "tsx scripts/download-assets.ts",
-    "enhance-images": "tsx scripts/enhance-key-images.ts"
+    "enhance-images": "tsx scripts/enhance-key-images.ts",
+    "generate-favicon": "tsx scripts/generate-favicon.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
