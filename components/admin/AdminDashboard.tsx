@@ -252,7 +252,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
         <div className="max-w-md mx-auto px-4">
           <div className="bg-surface-container-lowest shadow-xl rounded-3xl p-8 border border-outline-variant/30">
             <div className="flex items-center gap-3 mb-2">
-              <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-lg" />
+              <Image src="/images/logo.jpg" alt="Logo" width={40} height={40} className="rounded-lg" />
               <h1 className="font-headline text-xl font-bold text-primary">Admin Sign In</h1>
             </div>
             <p className="text-on-surface-variant text-sm mb-8">
@@ -325,7 +325,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
       <nav className="fixed top-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur border-b border-outline-variant/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="Logo" width={32} height={32} className="rounded" />
+            <Image src="/images/logo.jpg" alt="Logo" width={32} height={32} className="rounded" />
             <div>
               <p className="font-headline font-bold text-primary text-sm">PVS Promoters</p>
               <p className="text-xs text-on-surface-variant">Admin Center</p>
@@ -361,12 +361,29 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
 
       <div className="max-w-7xl mx-auto px-4 py-8 pt-36">
         {dbHealthy === false && (
-          <div className="mb-6 rounded-xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error">
-            MongoDB is offline. Public pages still show seeded projects, but admin edits and inquiries need a
-            database. In Docker, set{' '}
-            <code className="font-mono text-xs">MONGO_URI=mongodb://mongodb:27017/pvs_promoters</code> in{' '}
-            <code className="font-mono text-xs">.env</code>, then run{' '}
-            <code className="font-mono text-xs">docker compose up -d</code> (web + mongodb).
+          <div className="mb-6 rounded-2xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error space-y-2">
+            <p className="font-semibold">MongoDB is unavailable.</p>
+            <p>
+              If you deploy <strong>only</strong> the Docker Hub web image,{' '}
+              <code className="font-mono text-xs">mongodb://mongodb:27017</code> will not work — there is no MongoDB
+              container on that network.
+            </p>
+            <p>
+              On a VPS, run <strong>both</strong> web + MongoDB:{' '}
+              <code className="font-mono text-xs">docker compose -f docker-compose.prod.yml up -d</code>
+            </p>
+            <p>
+              On a single-container host, use{' '}
+              <a
+                href="https://www.mongodb.com/atlas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-medium"
+              >
+                MongoDB Atlas
+              </a>{' '}
+              and set <code className="font-mono text-xs">MONGO_URI</code> to your Atlas connection string.
+            </p>
           </div>
         )}
 
