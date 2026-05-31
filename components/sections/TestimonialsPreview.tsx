@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import Link from 'next/link';
 import { testimonials } from '@/content/testimonials';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Reveal } from '@/components/motion/Reveal';
@@ -32,7 +31,7 @@ function TestimonialAvatar({ photo, name }: { photo?: string; name: string }) {
 
 export function TestimonialsPreview() {
   return (
-    <section className="py-20 bg-surface">
+    <section id="testimonials" className="py-20 bg-surface">
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <SectionHead
           kicker="Testimonials"
@@ -40,7 +39,7 @@ export function TestimonialsPreview() {
           description="Hear from buyers who chose PVS Promoters for managed farmland near Bangalore."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          {testimonials.slice(0, 4).map((t, i) => (
+          {testimonials.map((t, i) => (
             <Reveal key={t.name + i} delay={i * 80}>
               <blockquote className="relative bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/30 hover-lift h-full flex gap-4">
                 <TestimonialAvatar photo={t.photo} name={t.name} />
@@ -52,11 +51,6 @@ export function TestimonialsPreview() {
               </blockquote>
             </Reveal>
           ))}
-        </div>
-        <div className="text-center mt-10">
-          <Link href="/testimonials" className="text-primary font-bold hover:text-secondary">
-            Read all reviews →
-          </Link>
         </div>
       </div>
     </section>

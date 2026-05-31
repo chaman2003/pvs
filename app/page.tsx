@@ -3,18 +3,10 @@ import Image from 'next/image';
 import { createPageMetadata } from '@/lib/metadata';
 import { HeroBackground } from '@/components/motion/HeroBackground';
 import { HeroText } from '@/components/motion/HeroText';
-import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
 import { HomeAbout } from '@/components/sections/HomeAbout';
-import { CocoBenefits } from '@/components/sections/CocoBenefits';
-import { HomeGallery } from '@/components/sections/HomeGallery';
-import { ProgressOverview } from '@/components/sections/ProgressOverview';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
-import { VideoLeadCTA } from '@/components/sections/VideoLeadCTA';
-import { ProjectTimeline } from '@/components/sections/ProjectTimeline';
 import { AmenitiesCarousel } from '@/components/sections/AmenitiesCarousel';
-import { StatsSection } from '@/components/sections/StatsSection';
 import { TestimonialsPreview } from '@/components/sections/TestimonialsPreview';
-import { BottomCTA } from '@/components/sections/BottomCTA';
 import { homeHero } from '@/content/home-sections';
 import { getFeaturedProjects } from '@/lib/projects';
 
@@ -32,7 +24,6 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* 1. Hero */}
       <section className="relative min-h-[70vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
           <Image
@@ -70,41 +61,10 @@ export default async function HomePage() {
         </HeroText>
       </section>
 
-      {/* 2. Services */}
-      <ServicesHighlight />
-
-      {/* 3. About */}
       <HomeAbout />
-
-      {/* 4. Coco benefits + drive times */}
-      <CocoBenefits />
-
-      {/* 5. Gallery */}
-      <HomeGallery />
-
-      {/* 6. Progress overview */}
-      <ProgressOverview />
-
-      {/* 7. Featured projects */}
       <FeaturedProjects projects={featured} />
-
-      {/* 8. Video + lead form CTA */}
-      <VideoLeadCTA />
-
-      {/* 9. History timeline */}
-      <ProjectTimeline />
-
-      {/* 10. Amenities carousel */}
       <AmenitiesCarousel />
-
-      {/* 11. Stats / fun facts */}
-      <StatsSection />
-
-      {/* 12. Testimonials */}
       <TestimonialsPreview />
-
-      {/* 13. Bottom CTA */}
-      <BottomCTA />
     </>
   );
 }

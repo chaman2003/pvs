@@ -25,6 +25,6 @@ export const amenities: AmenityItem[] = [
 
 export const amenitiesSectionHead = {
   kicker: 'Top Quality Amenities',
-  title: 'Our Promise',
-  subtitle: '16 world-class amenities across our gated coco farmland communities.',
+  title: 'World-Class Amenities',
+  subtitle: '16 amenities across our gated coco farmland communities.',
 } as const;

@@ -42,13 +42,14 @@ export const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/projects', label: 'Projects' },
   { href: '/services', label: 'Services' },
-  { href: '/testimonials', label: 'Testimonials' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
 export const footerLinks = [
-  ...navLinks,
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
 ] as const;

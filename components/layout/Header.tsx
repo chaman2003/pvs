@@ -38,14 +38,7 @@ export function Header() {
 
       <nav className="glass border-b border-outline-variant/20 backdrop-blur-xl bg-surface/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className={cn(
-              'flex items-center gap-3 group rounded-lg -m-1 p-1',
-              pathname === '/' && 'ring-2 ring-secondary-container/60 ring-offset-2'
-            )}
-            aria-current={pathname === '/' ? 'page' : undefined}
-          >
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/images/logo.png"
               alt="PVS Promoters"

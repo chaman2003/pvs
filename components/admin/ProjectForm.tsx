@@ -101,6 +101,18 @@ export function ProjectForm({
       onNotify('Project name is required', 'error');
       return;
     }
+    if (!form.location.trim()) {
+      onNotify('Location is required', 'error');
+      return;
+    }
+    if (!form.status.trim()) {
+      onNotify('Status is required', 'error');
+      return;
+    }
+    if (!form.category.trim()) {
+      onNotify('Category is required', 'error');
+      return;
+    }
 
     setSaving(true);
     const payload = {
@@ -194,7 +206,6 @@ export function ProjectForm({
         <label className="block text-sm font-bold mb-1">Price (per sq ft)</label>
         <Input
           name="price"
-          required
           placeholder="e.g., ₹1200 / sq ft"
           value={form.price}
           onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
@@ -204,7 +215,6 @@ export function ProjectForm({
         <label className="block text-sm font-bold mb-1">Plot Size</label>
         <Input
           name="plotSize"
-          required
           placeholder="e.g., 1200 - 2400 sq ft"
           value={form.plotSize}
           onChange={(e) => setForm((f) => ({ ...f, plotSize: e.target.value }))}
@@ -214,7 +224,6 @@ export function ProjectForm({
         <label className="block text-sm font-bold mb-1">Total Area</label>
         <Input
           name="totalArea"
-          required
           placeholder="e.g., 5 Acres"
           value={form.totalArea}
           onChange={(e) => setForm((f) => ({ ...f, totalArea: e.target.value }))}
@@ -239,6 +248,7 @@ export function ProjectForm({
         <label className="block text-sm font-bold mb-1">Category</label>
         <Select
           name="category"
+          required
           value={form.category}
           onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
         >
@@ -251,7 +261,6 @@ export function ProjectForm({
         <label className="block text-sm font-bold mb-1">Description</label>
         <Textarea
           name="description"
-          required
           rows={3}
           placeholder="Project description..."
           value={form.description}

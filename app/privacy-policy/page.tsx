@@ -63,9 +63,6 @@ export default function PrivacyPolicyPage() {
             Learn more about how we work with customers and handle enquiries on our website.
           </p>
           <div className="flex flex-wrap gap-4 text-sm font-bold">
-            <Link href="/faq" className="text-primary hover:text-secondary transition-colors">
-              FAQ →
-            </Link>
             <Link href="/contact" className="text-primary hover:text-secondary transition-colors">
               Contact Us →
             </Link>
