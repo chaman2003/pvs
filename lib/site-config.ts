@@ -11,7 +11,7 @@ export const siteConfig = {
   name: 'PVS Promoters',
   tagline: 'Your Lifelong Realtor!',
   phone: '+919600795354',
-  phoneDisplay: '+91 96007 953540',
+  phoneDisplay: '+91 96007 95354',
   email: 'pvscivilconstruction@gmail.com',
   addressLines: [
     '#79/B, 1st Floor',
