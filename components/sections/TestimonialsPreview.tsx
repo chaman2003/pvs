@@ -21,6 +21,7 @@ function TestimonialAvatar({ photo, name }: { photo?: string; name: string }) {
         src={photo}
         alt={`${name} — PVS Promoters customer review`}
         fill
+        loading="eager"
         className="object-cover"
         sizes="56px"
         onError={() => setFailed(true)}

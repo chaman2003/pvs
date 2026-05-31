@@ -35,6 +35,7 @@ export function ProjectDetailView({
             fill
             className="object-cover brightness-[0.5] hover-scale-img"
             priority
+            unoptimized={project.image.startsWith('/uploads/')}
             sizes="100vw"
           />
         </HeroBackground>

@@ -44,6 +44,7 @@ export function Header() {
               alt="PVS Promoters"
               width={40}
               height={40}
+              priority
               className="rounded-lg object-contain"
             />
             <div>

@@ -7,6 +7,10 @@ import { cn } from '@/lib/utils';
 
 type CarouselImage = { src: string; alt: string };
 
+function isUploadedImage(src: string) {
+  return src.startsWith('/uploads/');
+}
+
 export function ImageCarousel({
   images,
   className,
@@ -49,14 +53,22 @@ export function ImageCarousel({
   return (
     <div className={cn('relative', className)} role="region" aria-label="Project gallery">
       <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-[70vh] rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/20">
-        <Image
-          src={images[index].src}
-          alt={images[index].alt}
-          fill
-          className="object-contain sm:object-cover transition-opacity duration-500"
-          sizes="(max-width: 768px) 100vw, 66vw"
-          priority={index === 0}
-        />
+        {images.map((img, i) => (
+          <Image
+            key={img.src}
+            src={img.src}
+            alt={img.alt}
+            fill
+            priority={i === 0}
+            loading={i < 3 ? 'eager' : 'lazy'}
+            unoptimized={isUploadedImage(img.src)}
+            className={cn(
+              'absolute inset-0 object-contain sm:object-cover transition-opacity duration-300',
+              i === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            )}
+            sizes="(max-width: 768px) 100vw, 66vw"
+          />
+        ))}
         {onOpenFullscreen && (
           <button
             type="button"
@@ -64,7 +76,7 @@ export function ImageCarousel({
               e.stopPropagation();
               onOpenFullscreen(index);
             }}
-            className="absolute top-3 right-3 z-10 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
+            className="absolute top-3 right-3 z-20 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
             aria-label="View fullscreen"
           >
             <Maximize2 className="h-5 w-5" />
@@ -76,7 +88,7 @@ export function ImageCarousel({
           <button
             type="button"
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -84,7 +96,7 @@ export function ImageCarousel({
           <button
             type="button"
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-primary/80 text-on-primary hover:bg-primary shadow-lg"
             aria-label="Next image"
           >
             <ChevronRight className="h-6 w-6" />

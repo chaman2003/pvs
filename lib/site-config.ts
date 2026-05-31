@@ -30,10 +30,8 @@ export const siteConfig = {
   mapDirectionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${officeCoordinates.lat},${officeCoordinates.lng}&destination_place_name=${encodeURIComponent(officeMapLabel)}`,
   mapEmbedUrl: `https://maps.google.com/maps?q=${officeCoordinates.lat},${officeCoordinates.lng}&hl=en&z=17&output=embed`,
   social: {
-    facebook: 'https://www.facebook.com/AgricultureFarmland/',
-    instagram: 'https://www.instagram.com/',
-    linkedin: 'https://www.linkedin.com/',
-    youtube: 'https://www.youtube.com/',
+    facebook: 'https://www.facebook.com/p/PVS-Promoters-100090124654747/',
+    youtube: 'https://www.youtube.com/@pvspromoters2873/videos',
   },
 } as const;
 

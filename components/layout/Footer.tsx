@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Share2 } from 'lucide-react';
+import { Share2, Play } from 'lucide-react';
 import { siteConfig } from '@/lib/site-config';
-import { footerDisclaimer } from '@/content/footer';
 import { NewsletterForm } from '@/components/forms/NewsletterForm';
 import { FooterQuickLinks } from '@/components/layout/FooterQuickLinks';
+
+const socialLinks = [
+  { key: 'facebook' as const, href: siteConfig.social.facebook, icon: Share2, label: 'Facebook' },
+  { key: 'youtube' as const, href: siteConfig.social.youtube, icon: Play, label: 'YouTube' },
+];
 
 export function Footer() {
   return (
@@ -29,21 +33,18 @@ export function Footer() {
             projects and 11,000+ satisfied families.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
-            {Object.entries(siteConfig.social).map(([key, href]) => {
-              if (!href || href.endsWith('instagram.com/')) return null;
-              return (
-                <a
-                  key={key}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-on-primary/10 hover:bg-secondary-container hover:text-primary transition-colors text-sm capitalize"
-                >
-                  <Share2 className="h-4 w-4" />
-                  {key}
-                </a>
-              );
-            })}
+            {socialLinks.map(({ key, href, icon: Icon, label }) => (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-on-primary/10 hover:bg-secondary-container hover:text-primary transition-colors text-sm"
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -77,9 +78,6 @@ export function Footer() {
       </div>
 
       <div className="border-t border-on-primary/10 px-4 sm:px-8 py-6">
-        <p className="max-w-4xl mx-auto text-center text-xs text-on-primary/50 leading-relaxed mb-4">
-          {footerDisclaimer}
-        </p>
         <p className="text-center text-xs text-on-primary/60">
           © 2009–{new Date().getFullYear()} {siteConfig.name}. All rights reserved. Powered by{' '}
           <Link

@@ -12,17 +12,16 @@ export function HomeAbout() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative md:pb-12">
-            <Reveal>
-              <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
-                  alt="PVS Promoters coco farmland gated community aerial Hosur"
-                  fill
-                  className="object-cover hover-scale-img"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </Reveal>
+            <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
+                alt="PVS Promoters coco farmland gated community aerial Hosur"
+                fill
+                priority
+                className="object-cover hover-scale-img"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <ExperienceBadge
               title="17+ Years of Excellence"
               subtitle={`Delivering trust and luxury across the landscape since ${siteConfig.founded}.`}

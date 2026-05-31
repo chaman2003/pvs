@@ -79,8 +79,8 @@ select:focus {
   opacity: 0;
   transform: translateY(1rem);
   transition:
-    opacity 700ms ease-out,
-    transform 700ms ease-out;
+    opacity 400ms ease-out,
+    transform 400ms ease-out;
   will-change: opacity, transform;
 }
 

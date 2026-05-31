@@ -10,7 +10,7 @@ type UseInViewOptions = {
 
 export function useInView({
   threshold = 0.15,
-  rootMargin = '0px',
+  rootMargin = '300px 0px',
   once = true,
 }: UseInViewOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);

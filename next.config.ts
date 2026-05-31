@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: process.env.DOCKER_BUILD === '1',
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       { protocol: 'https', hostname: 'pvspromoters.com' },
       { protocol: 'https', hostname: 'pvs-promoters.com' },

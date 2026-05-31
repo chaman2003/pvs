@@ -47,7 +47,7 @@ export const organizationJsonLd = {
   email: siteConfig.email,
   foundingDate: '2009',
   areaServed: ['Hosur', 'Bangalore', 'Tamil Nadu'],
-  sameAs: Object.values(siteConfig.social).filter((u) => u && !u.endsWith('instagram.com/')),
+  sameAs: Object.values(siteConfig.social),
   geo: {
     '@type': 'GeoCoordinates',
     latitude: siteConfig.mapCoordinates.lat,
