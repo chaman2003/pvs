@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import type { IInquiry } from '@/lib/models/Inquiry';
 
-export type FileInquiry = IInquiry & {
+export type FileInquiry = Omit<IInquiry, 'date'> & {
   _id: string;
   date: string;
   status: string;
