@@ -362,27 +362,14 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
       <div className="max-w-7xl mx-auto px-4 py-8 pt-36">
         {dbHealthy === false && (
           <div className="mb-6 rounded-2xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error space-y-2">
-            <p className="font-semibold">MongoDB is unavailable.</p>
+            <p className="font-semibold">MongoDB Atlas is unavailable.</p>
             <p>
-              If you deploy <strong>only</strong> the Docker Hub web image,{' '}
-              <code className="font-mono text-xs">mongodb://mongodb:27017</code> will not work — there is no MongoDB
-              container on that network.
+              Verify <code className="font-mono text-xs">MONGO_URI</code> in your deployment environment points to
+              Atlas with database name <code className="font-mono text-xs">pvs_promoters</code>, then restart the app.
             </p>
             <p>
-              On a VPS, run <strong>both</strong> web + MongoDB:{' '}
-              <code className="font-mono text-xs">docker compose -f docker-compose.prod.yml up -d</code>
-            </p>
-            <p>
-              On a single-container host, use{' '}
-              <a
-                href="https://www.mongodb.com/atlas"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-medium"
-              >
-                MongoDB Atlas
-              </a>{' '}
-              and set <code className="font-mono text-xs">MONGO_URI</code> to your Atlas connection string.
+              Seed projects after first connect:{' '}
+              <code className="font-mono text-xs">npm run seed</code>
             </p>
           </div>
         )}

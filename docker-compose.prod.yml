@@ -1,27 +1,9 @@
-# Production: pull web image from Docker Hub + run MongoDB on the same server.
-# Do NOT deploy only the web container — mongodb://mongodb:27017 requires this stack.
+# Production: web container only — database is MongoDB Atlas (set MONGO_URI in .env).
 #
-# On your server:
-#   1. Copy this file and .env.docker.example (as .env) to the server
-#   2. docker compose -f docker-compose.prod.yml pull
-#   3. docker compose -f docker-compose.prod.yml up -d
-#
-# Single-container hosts (Render, Railway, etc.): use MongoDB Atlas instead:
-#   MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/pvs_promoters
+#   docker compose -f docker-compose.prod.yml pull
+#   docker compose -f docker-compose.prod.yml up -d
 
 services:
-  mongodb:
-    image: mongo:7
-    restart: unless-stopped
-    volumes:
-      - mongo_data:/data/db
-    healthcheck:
-      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 20s
-
   web:
     image: sunilbalaji2004/pvs-promoters:latest
     restart: unless-stopped
@@ -30,17 +12,9 @@ services:
     env_file:
       - .env
     environment:
-      MONGO_URI: ${MONGO_URI:-mongodb://mongodb:27017/pvs_promoters}
-      DATA_DIR: /app/data
       NODE_ENV: production
     volumes:
       - uploads_data:/app/public/uploads
-      - app_data:/app/data
-    depends_on:
-      mongodb:
-        condition: service_healthy
 
 volumes:
-  mongo_data:
   uploads_data:
-  app_data:

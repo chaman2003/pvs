@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Inquiry } from '@/lib/models/Inquiry';
-import { connectDB, isDbConfigured } from '@/lib/db/mongoose';
-import { saveInquiryToFile } from '@/lib/inquiries/file-store';
+import { requireDatabaseConnection } from '@/lib/db/require-db';
 import { inquirySchema } from '@/lib/validators/inquiry';
 
 export async function POST(request: NextRequest) {
@@ -15,23 +14,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (isDbConfigured()) {
-      try {
-        const conn = await connectDB();
-        if (conn) {
-          const inquiry = new Inquiry(parsed.data);
-          await inquiry.save();
-          return NextResponse.json(
-            { success: true, message: 'Inquiry submitted successfully' },
-            { status: 201 }
-          );
-        }
-      } catch {
-        // MongoDB unreachable — fall through to file storage
-      }
-    }
+    const dbError = await requireDatabaseConnection();
+    if (dbError) return dbError;
 
-    await saveInquiryToFile(parsed.data);
+    const inquiry = new Inquiry(parsed.data);
+    await inquiry.save();
+
     return NextResponse.json(
       { success: true, message: 'Inquiry submitted successfully' },
       { status: 201 }
