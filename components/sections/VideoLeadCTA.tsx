@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { siteVideos } from '@/content/videos';
 import { VideoModal } from '@/components/ui/VideoModal';
@@ -7,7 +7,7 @@ import { Reveal } from '@/components/motion/Reveal';
 export function VideoLeadCTA() {
   return (
     <section className="relative py-20 overflow-hidden">
-      <Image
+      <SiteImage
         src="/images/enhanced/green-hills-sunset-1080w.webp"
         alt="PVS Promoters managed farmland near Bangalore Hosur"
         fill
@@ -31,7 +31,7 @@ export function VideoLeadCTA() {
                   videoId={siteVideos.cta.id}
                   label={siteVideos.cta.label}
                   poster={
-                    <Image
+                    <SiteImage
                       src="/images/site-launch-aerial.png"
                       alt="PVS farmland site visit aerial view"
                       fill

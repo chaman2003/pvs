@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { createPageMetadata } from '@/lib/metadata';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { ProjectFilter } from '@/components/projects/ProjectFilter';
@@ -22,12 +22,12 @@ export default async function ProjectsPage() {
     <div className="bg-surface">
       <section className="relative h-[40vh] min-h-[300px] max-h-[90vh] overflow-hidden">
         <HeroBackground>
-          <Image
+          <SiteImage
             src="/images/enhanced/coco-farm-aerial-playground-1920w.webp"
             alt="Projects"
             fill
             className="object-cover brightness-[0.45]"
-            priority
+            critical
             sizes="100vw"
           />
         </HeroBackground>

@@ -49,3 +49,6 @@ next-env.d.ts
 # IDE
 .cursor
 .vscode
+
+# local legacy backup (not part of the app)
+/pvspromoters_backup/

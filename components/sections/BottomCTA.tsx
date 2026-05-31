@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import Link from 'next/link';
 import { bottomCta } from '@/content/home-sections';
 import { Reveal } from '@/components/motion/Reveal';
@@ -6,7 +6,7 @@ import { Reveal } from '@/components/motion/Reveal';
 export function BottomCTA() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <Image
+      <SiteImage
         src="/images/enhanced/coco-farm-clubhouse-aerial-1920w.webp"
         alt="PVS Promoters luxury coco farmland clubhouse aerial Hosur"
         fill

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import {
   BadgeCheck,
   Eye,
@@ -62,11 +62,11 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[70vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
-          <Image
+          <SiteImage
             src="/images/enhanced/temple-river-aerial-1920w.webp"
             alt="PVS Promoters — premium real estate development"
             fill
-            priority
+            critical
             className="object-cover brightness-[0.45]"
             sizes="100vw"
           />
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <div className="relative md:pb-12">
               <Reveal>
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-                  <Image
+                  <SiteImage
                     src="/images/enhanced/amenity-hub-pool-aerial-1080w.webp"
                     alt="PVS Promoters projects and team"
                     fill

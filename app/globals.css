@@ -74,17 +74,27 @@ select:focus {
   outline: none;
 }
 
-/* GPU-safe scroll reveal */
+/* Scroll reveal — content visible immediately; optional subtle motion when enabled */
 .reveal {
-  opacity: 0;
-  transform: translateY(1rem);
-  transition:
-    opacity 400ms ease-out,
-    transform 400ms ease-out;
-  will-change: opacity, transform;
+  opacity: 1;
+  transform: none;
 }
 
 .reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-motion {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity 350ms ease-out,
+    transform 350ms ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-motion.reveal-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -157,7 +167,8 @@ select:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal-motion {
     opacity: 1;
     transform: none;
     transition: none;

@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
+import { SiteLogo } from '@/components/ui/SiteLogo';
 import { siteConfig, navLinks } from '@/lib/site-config';
 import { isNavLinkActive } from '@/lib/nav-active';
 import { navLinkClassName } from '@/components/layout/nav-link-styles';
@@ -39,14 +39,7 @@ export function Header() {
       <nav className="glass border-b border-outline-variant/20 backdrop-blur-xl bg-surface/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/images/logo.png"
-              alt="PVS Promoters"
-              width={40}
-              height={40}
-              priority
-              className="rounded-lg object-contain"
-            />
+            <SiteLogo size={40} priority />
             <div>
               <p className="font-headline font-bold text-primary leading-tight">{siteConfig.name}</p>
               <p className="text-[10px] text-secondary font-semibold uppercase tracking-wider">

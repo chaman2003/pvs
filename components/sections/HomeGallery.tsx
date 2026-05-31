@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import galleryData from '@/content/gallery.json';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { ImageLightbox } from '@/components/ui/ImageLightbox';
 import { SectionHead } from '@/components/ui/SectionHead';
 
@@ -23,12 +23,11 @@ export function HomeGallery() {
                   onClick={() => open(i)}
                   className="relative aspect-square rounded-xl overflow-hidden group w-full"
                 >
-                  <Image
+                  <SiteImage
                     src={img.src}
                     alt={img.alt}
                     fill
-                    priority={i < 4}
-                    loading={i < 8 ? 'eager' : 'lazy'}
+                    critical={i < 4}
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 50vw, 25vw"
                   />

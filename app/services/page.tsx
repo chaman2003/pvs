@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import {
   BadgeCheck,
   BarChart3,
@@ -39,11 +39,11 @@ export default function ServicesPage() {
     <div className="bg-surface">
       <section className="relative min-h-[60vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
-          <Image
+          <SiteImage
             src="/images/enhanced/site-earthworks-retaining-wall-1920w.webp"
             alt="Expert real estate services by PVS Promoters"
             fill
-            priority
+            critical
             className="object-cover brightness-[0.45]"
             sizes="100vw"
           />
@@ -99,7 +99,7 @@ export default function ServicesPage() {
             <div className="relative md:pb-12">
               <Reveal delay={150}>
                 <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-                  <Image
+                  <SiteImage
                     src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
                     alt="Property development by PVS Promoters"
                     fill
@@ -125,7 +125,7 @@ export default function ServicesPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl lg:order-1">
-                <Image
+                <SiteImage
                   src="/images/enhanced/paddy-fields-aerial-1080w.webp"
                   alt="Premium land sales by PVS Promoters"
                   fill
@@ -212,7 +212,7 @@ export default function ServicesPage() {
             </Reveal>
             <Reveal delay={150}>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-                <Image
+                <SiteImage
                   src="/images/enhanced/plot-division-top-down-1080w.webp"
                   alt="Real estate consultation by PVS Promoters"
                   fill

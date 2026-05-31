@@ -1,18 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import type { IProject } from '@/lib/models/Project';
-
-function isUploadedImage(src: string) {
-  return src.startsWith('/uploads/');
-}
+import { SiteImage } from '@/components/ui/SiteImage';
 
 export function ProjectCard({ project, index = 0 }: { project: IProject; index?: number }) {
   const [barWidth, setBarWidth] = useState(0);
   const barRef = useRef<HTMLDivElement>(null);
-  const eager = index < 3;
+  const urgent = index < 6;
 
   useEffect(() => {
     const el = barRef.current;
@@ -36,13 +32,11 @@ export function ProjectCard({ project, index = 0 }: { project: IProject; index?:
     <article className="group hover-lift">
       <Link href={`/projects/${project.id}`}>
         <div className="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container mb-6">
-          <Image
+          <SiteImage
             src={project.image}
             alt={`${project.title} managed farmland ${project.location} — PVS Promoters`}
             fill
-            priority={eager}
-            loading={eager ? 'eager' : 'lazy'}
-            unoptimized={isUploadedImage(project.image)}
+            critical={urgent}
             className="object-cover hover-scale-img"
             sizes="(max-width: 768px) 100vw, 33vw"
           />

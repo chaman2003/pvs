@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { IProject } from '@/lib/models/Project';
 import { ProjectCard } from '@/components/projects/ProjectCard';
+import { FeaturedProjectsWarmup } from '@/components/sections/FeaturedProjectsWarmup';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Reveal } from '@/components/motion/Reveal';
 
@@ -9,6 +10,7 @@ export function FeaturedProjects({ projects }: { projects: IProject[] }) {
 
   return (
     <section className="py-20 bg-surface">
+      <FeaturedProjectsWarmup projects={projects} />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <SectionHead
           kicker="Popular Projects"

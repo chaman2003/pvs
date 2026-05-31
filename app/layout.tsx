@@ -53,6 +53,9 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/images/logo.png" />
+      </head>
       <body className={`${manrope.variable} ${workSans.variable} antialiased min-h-screen flex flex-col bg-background`}>
         <JsonLd
           data={[

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { createPageMetadata } from '@/lib/metadata';
 import { HeroBackground } from '@/components/motion/HeroBackground';
 import { HeroText } from '@/components/motion/HeroText';
@@ -25,11 +25,11 @@ export default async function HomePage() {
     <>
       <section className="relative min-h-[70vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
-          <Image
+          <SiteImage
             src="/images/enhanced/green-hills-sunset-1920w.webp"
             alt="Buy coco farmland near Bangalore and Hosur — PVS Promoters managed farmland"
             fill
-            priority
+            critical
             className="object-cover brightness-[0.45]"
             sizes="100vw"
           />

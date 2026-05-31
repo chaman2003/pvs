@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: process.env.DOCKER_BUILD === '1',
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
     minimumCacheTTL: 31536000,
     remotePatterns: [
       { protocol: 'https', hostname: 'pvspromoters.com' },
@@ -16,6 +16,18 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: '**.googleusercontent.com' },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/images/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/uploads/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+      },
+    ];
   },
   async redirects() {
     return [

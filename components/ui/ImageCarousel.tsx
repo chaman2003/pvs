@@ -1,15 +1,11 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { cn } from '@/lib/utils';
 
 type CarouselImage = { src: string; alt: string };
-
-function isUploadedImage(src: string) {
-  return src.startsWith('/uploads/');
-}
 
 export function ImageCarousel({
   images,
@@ -54,16 +50,14 @@ export function ImageCarousel({
     <div className={cn('relative', className)} role="region" aria-label="Project gallery">
       <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-[70vh] rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/20">
         {images.map((img, i) => (
-          <Image
+          <SiteImage
             key={img.src}
             src={img.src}
             alt={img.alt}
             fill
-            priority={i === 0}
-            loading={i < 3 ? 'eager' : 'lazy'}
-            unoptimized={isUploadedImage(img.src)}
+            critical={i === 0}
             className={cn(
-              'absolute inset-0 object-contain sm:object-cover transition-opacity duration-300',
+              'absolute inset-0 object-contain sm:object-cover transition-opacity duration-200',
               i === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
             )}
             sizes="(max-width: 768px) 100vw, 66vw"

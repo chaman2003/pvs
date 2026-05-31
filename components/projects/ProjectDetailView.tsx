@@ -1,8 +1,9 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import Link from 'next/link';
 import type { IProject } from '@/lib/models/Project';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { ProjectGallery } from '@/components/projects/ProjectGallery';
+import { ProjectImageWarmup } from '@/components/projects/ProjectImageWarmup';
 import { ProjectVideoGrid } from '@/components/projects/ProjectVideoGrid';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { SectionHead } from '@/components/ui/SectionHead';
@@ -27,15 +28,15 @@ export function ProjectDetailView({
 
   return (
     <div>
+      <ProjectImageWarmup urls={galleryImages.map((g) => g.src)} />
       <section className="relative min-h-[50vh] max-h-[90vh] flex items-center overflow-hidden">
         <HeroBackground>
-          <Image
+          <SiteImage
             src={project.image}
             alt={`${project.title} managed farmland ${project.location} — PVS Promoters hero`}
             fill
             className="object-cover brightness-[0.5] hover-scale-img"
-            priority
-            unoptimized={project.image.startsWith('/uploads/')}
+            critical
             sizes="100vw"
           />
         </HeroBackground>

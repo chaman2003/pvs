@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { Check } from 'lucide-react';
 import { cocoBenefits } from '@/content/home-sections';
 import { siteVideos } from '@/content/videos';
@@ -45,7 +45,7 @@ export function CocoBenefits() {
               videoId={siteVideos.walkthrough.id}
               label={siteVideos.walkthrough.label}
               poster={
-                <Image
+                <SiteImage
                   src="/images/amenity-hub-pool-aerial.png"
                   alt="PVS coco farmland amenities pool aerial Hosur"
                   fill

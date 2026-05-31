@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
 import { homeAbout } from '@/content/home-sections';
@@ -13,11 +13,11 @@ export function HomeAbout() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative md:pb-12">
             <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-              <Image
+              <SiteImage
                 src="/images/enhanced/coco-farm-clubhouse-aerial-1080w.webp"
                 alt="PVS Promoters coco farmland gated community aerial Hosur"
                 fill
-                priority
+                critical
                 className="object-cover hover-scale-img"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { cn } from '@/lib/utils';
 
 const LOGO_SRC = '/images/logo.png';
@@ -9,15 +9,14 @@ type SiteLogoProps = {
   priority?: boolean;
 };
 
-export function SiteLogo({ size = 40, className, priority = false }: SiteLogoProps) {
+export function SiteLogo({ size = 40, className, priority = true }: SiteLogoProps) {
   return (
-    <Image
+    <SiteImage
       src={LOGO_SRC}
       alt="PVS Promoters"
       width={size}
       height={size}
-      priority={priority}
-      unoptimized
+      critical={priority}
       className={cn('rounded-lg object-contain shrink-0', className)}
     />
   );

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import Link from 'next/link';
 import { Shield, Headphones, Award, Trees } from 'lucide-react';
 import { homeServices } from '@/content/home-sections';
@@ -50,7 +50,7 @@ export function ServicesHighlight() {
               videoId={siteVideos.hero.id}
               label={siteVideos.hero.label}
               poster={
-                <Image
+                <SiteImage
                   src="/images/coco-farm-clubhouse-aerial.png"
                   alt="PVS Promoters coco farmland aerial view Hosur"
                   fill

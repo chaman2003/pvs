@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { useState } from 'react';
 import { testimonials } from '@/content/testimonials';
 import { SectionHead } from '@/components/ui/SectionHead';
@@ -17,11 +17,10 @@ function TestimonialAvatar({ photo, name }: { photo?: string; name: string }) {
   }
   return (
     <div className="relative h-14 w-14 shrink-0 rounded-full overflow-hidden bg-primary/10">
-      <Image
+      <SiteImage
         src={photo}
         alt={`${name} — PVS Promoters customer review`}
         fill
-        loading="eager"
         className="object-cover"
         sizes="56px"
         onError={() => setFailed(true)}
