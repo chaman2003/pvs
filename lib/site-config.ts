@@ -44,11 +44,11 @@ export const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/testimonials', label: 'Testimonials' },
   { href: '/guides', label: 'Guides' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
 export const footerLinks = [
   ...navLinks,
-  { href: '/faq', label: 'FAQ' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
 ] as const;

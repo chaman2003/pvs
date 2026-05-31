@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Share2 } from 'lucide-react';
-import { siteConfig, footerLinks } from '@/lib/site-config';
+import { siteConfig } from '@/lib/site-config';
 import { footerDisclaimer, footerLocations } from '@/content/footer';
 import { NewsletterForm } from '@/components/forms/NewsletterForm';
+import { FooterQuickLinks } from '@/components/layout/FooterQuickLinks';
 
 export function Footer() {
   return (
@@ -48,15 +49,7 @@ export function Footer() {
 
         <div>
           <h3 className="font-headline font-bold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm text-on-primary/80">
-            {footerLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="hover:text-secondary-container transition-colors">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <FooterQuickLinks />
         </div>
 
         <div>
@@ -75,6 +68,15 @@ export function Footer() {
             <li className="whitespace-pre-line leading-relaxed">{siteConfig.addressLines.join('\n')}</li>
           </ul>
           <h3 className="font-headline font-bold mt-6 mb-3">Project Locations</h3>
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-on-primary/20 mb-3">
+            <Image
+              src="/images/map-img1.png"
+              alt="PVS Promoters project locations map — Uthanapalli, Shoolagiri, Pathakotta near Hosur"
+              fill
+              className="object-contain bg-on-primary/5"
+              sizes="(max-width: 768px) 100vw, 25vw"
+            />
+          </div>
           <ul className="space-y-2 text-sm text-on-primary/70">
             {footerLocations.map((loc) => (
               <li key={loc.name}>

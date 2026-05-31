@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Input } from '@/components/ui/Input';
-import { SiteLogo } from '@/components/ui/SiteLogo';
 import { ProjectForm, type AdminProject } from '@/components/admin/ProjectForm';
 
 type Tab = 'dashboard' | 'projects' | 'inquiries' | 'newsletter';
@@ -252,7 +252,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
         <div className="max-w-md mx-auto px-4">
           <div className="bg-surface-container-lowest shadow-xl rounded-3xl p-8 border border-outline-variant/30">
             <div className="flex items-center gap-3 mb-2">
-              <SiteLogo size={48} priority />
+              <Image src="/images/logo.jpg" alt="Logo" width={40} height={40} className="rounded-lg" />
               <h1 className="font-headline text-xl font-bold text-primary">Admin Sign In</h1>
             </div>
             <p className="text-on-surface-variant text-sm mb-8">
@@ -325,7 +325,7 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
       <nav className="fixed top-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur border-b border-outline-variant/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <SiteLogo size={36} />
+            <Image src="/images/logo.jpg" alt="Logo" width={32} height={32} className="rounded" />
             <div>
               <p className="font-headline font-bold text-primary text-sm">PVS Promoters</p>
               <p className="text-xs text-on-surface-variant">Admin Center</p>
@@ -361,16 +361,9 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
 
       <div className="max-w-7xl mx-auto px-4 py-8 pt-36">
         {dbHealthy === false && (
-          <div className="mb-6 rounded-2xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error space-y-2">
-            <p className="font-semibold">MongoDB Atlas is unavailable.</p>
-            <p>
-              Verify <code className="font-mono text-xs">MONGO_URI</code> in your deployment environment points to
-              Atlas with database name <code className="font-mono text-xs">pvs_promoters</code>, then restart the app.
-            </p>
-            <p>
-              Seed projects after first connect:{' '}
-              <code className="font-mono text-xs">npm run seed</code>
-            </p>
+          <div className="mb-6 rounded-2xl border border-error/30 bg-error-container/40 px-4 py-3 text-sm text-error">
+            MongoDB is unavailable. Start MongoDB, verify <code className="font-mono">MONGO_URI</code>, then run{' '}
+            <code className="font-mono">npm run seed</code> to import projects.
           </div>
         )}
 
