@@ -1,5 +1,6 @@
 import {
   backupProjectMedia,
+  getBackupMedia,
   type CocoProjectId,
   type ProjectVideoSlot,
 } from '@/content/backup-project-media';
@@ -16,23 +17,32 @@ function slotsToItems(slots: ProjectVideoSlot[]): ProjectVideoItem[] {
 export const backupProjectVideos: Record<string, ProjectVideoItem[]> = Object.fromEntries(
   (Object.keys(backupProjectMedia) as CocoProjectId[]).map((id) => [
     id,
-    slotsToItems(backupProjectMedia[id].videos),
+    slotsToItems([
+      backupProjectMedia[id].leadVideo,
+      ...backupProjectMedia[id].videoGrid,
+    ]),
   ])
 );
 
+/** Non-coco: dedupe by YouTube ID. Coco: use ordered videoGrid from manifest. */
 export function resolveProjectVideos(
   projectId: string,
   videoIds: string[] | undefined
 ): ProjectVideoItem[] {
-  const backup = backupProjectVideos[projectId];
+  const backup = getBackupMedia(projectId);
+  if (backup) {
+    return slotsToItems(backup.videoGrid);
+  }
+
+  const fallback = backupProjectVideos[projectId];
   const ids =
     videoIds?.filter(Boolean).length
       ? [...new Set(videoIds!.filter(Boolean))]
-      : backup?.map((v) => v.id) ?? [];
+      : fallback?.map((v) => v.id) ?? [];
 
   if (!ids.length) return [];
 
-  const thumbById = new Map(backup?.map((v) => [v.id, v.thumbnail]) ?? []);
+  const thumbById = new Map(fallback?.map((v) => [v.id, v.thumbnail]) ?? []);
 
   return ids.map((id) => ({
     id,

@@ -6,6 +6,7 @@ import { requireAdmin } from '@/lib/api-auth';
 import { projectUpdateSchema } from '@/lib/validators/project';
 import { buildProjectUpdatePayload } from '@/lib/project-payload';
 import { getProjectBySlug } from '@/lib/projects';
+import { serializeProject } from '@/lib/serialize-project';
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -49,7 +50,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
     return NextResponse.json({
       success: true,
       message: 'Project updated successfully',
-      data: updated,
+      data: serializeProject(updated),
     });
   } catch (error) {
     return NextResponse.json(

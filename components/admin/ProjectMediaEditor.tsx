@@ -60,6 +60,10 @@ export function ProjectMediaEditor({
   onYoutubeVideosChange,
   videoFiles,
   onVideoFilesChange,
+  leadVideoId,
+  onLeadVideoChange,
+  videoGridCount = 0,
+  isCoco = false,
   getAuthHeaders,
   onNotify,
 }: {
@@ -70,6 +74,10 @@ export function ProjectMediaEditor({
   onYoutubeVideosChange: (ids: string[]) => void;
   videoFiles: string[];
   onVideoFilesChange: (urls: string[]) => void;
+  leadVideoId?: string;
+  onLeadVideoChange?: (id: string | null) => void;
+  videoGridCount?: number;
+  isCoco?: boolean;
   getAuthHeaders: () => HeadersInit;
   onNotify: NotifyFn;
 }) {
@@ -150,7 +158,8 @@ export function ProjectMediaEditor({
               Project Images
             </h3>
             <p className="text-xs text-on-surface-variant mt-1">
-              Upload multiple images. The first image is used as the cover. Drag order with arrows.
+              Upload multiple images (JPEG, PNG, WebP, GIF — max 16MB each). The first image is the
+              cover. Reorder with arrows.
             </p>
           </div>
           <button
@@ -232,8 +241,32 @@ export function ProjectMediaEditor({
           YouTube Videos
         </h3>
         <p className="text-xs text-on-surface-variant mb-3">
-          Paste a YouTube link or 11-character video ID.
+          Paste a YouTube link or 11-character video ID. The lead video appears above the gallery on
+          the project page.
+          {isCoco && videoGridCount > 0 && (
+            <>
+              {' '}
+              Poster wall: {videoGridCount} slot{videoGridCount === 1 ? '' : 's'} (use Restore
+              backup media for exact coco layout).
+            </>
+          )}
         </p>
+        {youtubeVideos.length > 0 && onLeadVideoChange && (
+          <div className="mb-4">
+            <label className="block text-xs font-bold text-primary mb-1">Lead video</label>
+            <select
+              value={leadVideoId || youtubeVideos[0]}
+              onChange={(e) => onLeadVideoChange(e.target.value || null)}
+              className="w-full rounded-lg border border-outline-variant/40 px-3 py-2 text-sm"
+            >
+              {youtubeVideos.map((id) => (
+                <option key={id} value={id}>
+                  {id}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="flex flex-col sm:flex-row gap-2 mb-4">
           <input
             value={youtubeDraft}
@@ -305,7 +338,7 @@ export function ProjectMediaEditor({
               <Video className="h-5 w-5" />
               Uploaded Videos
             </h3>
-            <p className="text-xs text-on-surface-variant mt-1">MP4, WebM, or MOV files (max 100MB each).</p>
+            <p className="text-xs text-on-surface-variant mt-1">MP4, WebM, or MOV files.</p>
           </div>
           <button
             type="button"

@@ -75,21 +75,6 @@ export const cocoBenefits = {
   ],
 } as const;
 
-export const progressOverview = {
-  completed: {
-    label: 'Completed Projects',
-    value: '10M',
-    unit: 'sq ft developed',
-    detail: 'Across Hosur and Tamil Nadu since 2009',
-  },
-  ongoing: {
-    label: 'Ongoing Projects',
-    value: '47',
-    unit: 'plots & ~25 acres',
-    detail: 'Active development across Pathakotta and Shoolagiri',
-  },
-} as const;
-
 export const bottomCta = {
   kicker: 'Luxury Farm Living',
   title: 'We have developed over more than 10 Million sq ft of real estate around Hosur',

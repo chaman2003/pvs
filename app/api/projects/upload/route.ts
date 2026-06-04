@@ -9,8 +9,7 @@ const UPLOAD_ROOT = path.join(process.cwd(), 'public', 'uploads', 'projects');
 const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 const VIDEO_TYPES = new Set(['video/mp4', 'video/webm', 'video/quicktime']);
 
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-const MAX_VIDEO_BYTES = 100 * 1024 * 1024;
+const MAX_IMAGE_BYTES = 16 * 1024 * 1024;
 
 function safeProjectId(raw: string): string {
   const slug = slugify(raw || 'general');
@@ -37,7 +36,6 @@ export async function POST(request: NextRequest) {
 
     const isVideo = type === 'video';
     const allowedTypes = isVideo ? VIDEO_TYPES : IMAGE_TYPES;
-    const maxBytes = isVideo ? MAX_VIDEO_BYTES : MAX_IMAGE_BYTES;
 
     if (!allowedTypes.has(file.type)) {
       return NextResponse.json(
@@ -46,9 +44,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (file.size > maxBytes) {
+    if (!isVideo && file.size > MAX_IMAGE_BYTES) {
       return NextResponse.json(
-        { success: false, error: `File too large (max ${isVideo ? '100MB' : '5MB'})` },
+        { success: false, error: 'File too large (max 16MB for images)' },
         { status: 400 }
       );
     }

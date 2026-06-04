@@ -15,7 +15,7 @@ export function FeaturedProjects({ projects }: { projects: IProject[] }) {
         <SectionHead
           kicker="Popular Projects"
           title="Checkout Popular Projects"
-          description="Explore our flagship coco farmland developments with GOAL progress and availability."
+          description="Explore our flagship coco farmland developments and availability."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {projects.slice(0, 3).map((project, i) => (

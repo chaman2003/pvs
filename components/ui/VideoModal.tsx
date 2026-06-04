@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Play, X } from 'lucide-react';
-import { VideoEmbed } from '@/components/ui/VideoEmbed';
+import { Play } from 'lucide-react';
+import { VideoPlayerModal } from '@/components/ui/VideoPlayerModal';
 
 export function VideoModal({
   videoId,
@@ -31,26 +31,12 @@ export function VideoModal({
           </span>
         </span>
       </button>
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
-          role="dialog"
-          aria-modal="true"
-          aria-label={label}
-        >
-          <div className="relative w-full max-w-4xl">
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="absolute -top-12 right-0 text-on-primary hover:text-secondary-container"
-              aria-label="Close video"
-            >
-              <X className="h-8 w-8" />
-            </button>
-            <VideoEmbed videoId={videoId} title={label} />
-          </div>
-        </div>
-      )}
+      <VideoPlayerModal
+        open={open}
+        onClose={() => setOpen(false)}
+        videoId={videoId}
+        title={label}
+      />
     </>
   );
 }

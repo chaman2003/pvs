@@ -1,10 +1,7 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
-import {
-  COCO_PROJECT_IDS,
-  getCocoMediaPayload,
-  type CocoProjectId,
-} from '../content/backup-project-media';
+import { COCO_PROJECT_IDS, type CocoProjectId } from '../content/backup-project-media';
+import { getCocoMediaDocument } from '../lib/project-page-media';
 
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -20,7 +17,7 @@ async function sync() {
   console.log('Connected to MongoDB');
 
   for (const id of COCO_PROJECT_IDS) {
-    const media = getCocoMediaPayload(id as CocoProjectId);
+    const media = getCocoMediaDocument(id as CocoProjectId);
     const result = await Project.findOneAndUpdate(
       { id },
       { $set: media },

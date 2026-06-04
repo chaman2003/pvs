@@ -4,10 +4,10 @@ import { siteConfig } from '@/lib/site-config';
 import type { IProject } from '@/lib/models/Project';
 
 export function getProjectPageMetadata(project: IProject): Metadata {
-  const title = project.seo?.title ?? project.title;
+  const title = project.title;
   const description =
-    project.seo?.description ??
-    `${project.title} at ${project.location}. ${project.description.slice(0, 120)}`;
+    project.description ||
+    `${project.title} at ${project.location}. Premium farmland and plots by PVS Promoters.`;
   const ogImage = project.image.startsWith('http')
     ? project.image
     : `${siteConfig.url}${project.image}`;

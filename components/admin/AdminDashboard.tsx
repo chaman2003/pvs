@@ -238,7 +238,8 @@ export function AdminDashboard({ initialAuthenticated }: { initialAuthenticated:
 
   function projectMediaCount(p: Project) {
     const images = p.gallery?.length || (p.image ? 1 : 0);
-    const videos = (p.videos?.length || 0) + (p.videoFiles?.length || 0);
+    const videos =
+      (p.videoGrid?.length || p.videos?.length || 0) + (p.videoFiles?.length || 0);
     return { images, videos };
   }
 

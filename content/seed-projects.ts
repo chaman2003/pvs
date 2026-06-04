@@ -1,9 +1,15 @@
+import type { CocoProjectId } from '@/content/backup-project-media';
 import type { IProject } from '@/lib/models/Project';
+import { getCocoMediaDocument } from '@/lib/project-page-media';
 
 const IMG = '/images';
 
+function withCocoMedia(id: CocoProjectId, project: IProject): IProject {
+  return { ...project, ...getCocoMediaDocument(id) };
+}
+
 export const seedProjects: IProject[] = [
-  {
+  withCocoMedia('phase-1', {
     id: 'phase-1',
     title: 'PVS Coco Farmland Phase-1',
     category: 'Farmland',
@@ -26,8 +32,6 @@ export const seedProjects: IProject[] = [
     features: ['Clear Title', 'Gated Community', 'Coco Plantation', 'Water Source'],
     amenities: ['Security', 'Internal Roads', 'Electricity', 'Fencing'],
     benefits: ['High ROI potential', 'Weekend getaway', 'Organic farming'],
-    progress: 75,
-    goal: { label: 'Plots Goal', value: '23 plots' },
     youtubeId: 'I8oYfqJXVz4',
     videos: ['I8oYfqJXVz4', 'MFFPP6BPYik', 'UiBCDHTRM2U', 'WszjDmn56oo'],
     timeline: { start: '2022', completion: '2025' },
@@ -37,8 +41,8 @@ export const seedProjects: IProject[] = [
       title: 'PVS Coco Farmland Phase-1 Pathakotta Hosur',
       description: 'Own premium coco farmland plots at Pathakotta, Hosur with PVS Promoters. Gated community, clear titles, 17+ years experience.',
     },
-  },
-  {
+  }),
+  withCocoMedia('phase-2', {
     id: 'phase-2',
     title: 'PVS Coco Farmland Phase-2',
     category: 'Farmland',
@@ -61,8 +65,6 @@ export const seedProjects: IProject[] = [
     features: ['DTCP Approved Layout', 'Plantation Support', 'Clubhouse Access'],
     amenities: ['Swimming Pool', 'Children Park', 'Street Lights'],
     benefits: ['Appreciation corridor', 'Managed farmland', 'Rental income potential'],
-    progress: 70,
-    goal: { label: 'Acres Sold', value: '25 acres SOLD' },
     youtubeId: 'I8oYfqJXVz4',
     videos: ['I8oYfqJXVz4', 'MFFPP6BPYik', 'UiBCDHTRM2U', 'WszjDmn56oo'],
     featured: true,
@@ -70,8 +72,8 @@ export const seedProjects: IProject[] = [
       title: 'PVS Coco Farmland Phase-2 Pathakotta Hosur',
       description: 'Phase 2 coco farmland at Pathakotta with modern amenities, 500 cents layout, and clear documentation.',
     },
-  },
-  {
+  }),
+  withCocoMedia('shoolagiri', {
     id: 'shoolagiri',
     title: 'Coco Farmland Shoolagiri',
     category: 'Farmland',
@@ -94,7 +96,6 @@ export const seedProjects: IProject[] = [
     features: ['Highway Access', 'Green Surroundings', 'Flexible Plot Sizes'],
     amenities: ['Security Cabin', 'Borewell', 'Plantation'],
     benefits: ['Peaceful living', 'Investment growth', 'Eco-friendly lifestyle'],
-    progress: 40,
     youtubeId: 'NIKcPoE3uwY',
     videos: ['NIKcPoE3uwY', 'UiBCDHTRM2U', 'WszjDmn56oo'],
     featured: true,
@@ -102,7 +103,7 @@ export const seedProjects: IProject[] = [
       title: 'Coco Farmland Shoolagiri Hosur | PVS Promoters',
       description: 'Farmland plots near Shoolagiri with excellent connectivity, natural beauty, and gated community amenities.',
     },
-  },
+  }),
   {
     id: 'emerald-estate',
     title: 'The Emerald Estate',
@@ -122,7 +123,6 @@ export const seedProjects: IProject[] = [
     features: ['Luxury Villas', 'Premium Amenities', 'Gated Community'],
     amenities: ['Clubhouse', 'Landscaped Gardens', '24/7 Security'],
     benefits: ['Premium lifestyle', 'Strong appreciation', 'Exclusive community'],
-    progress: 55,
     featured: true,
     details: { area: '2400 - 4500 sq.ft', units: 'Limited plots', rera: 'On request' },
     seo: {
@@ -169,7 +169,6 @@ export const seedProjects: IProject[] = [
     description: 'Phase II residential layout with highway access and active site development.',
     features: ['Highway Access', 'Development in Progress', 'Residential Layout'],
     benefits: ['Strategic location', 'Active development', 'Investment potential'],
-    progress: 45,
     featured: false,
     seo: { title: 'Shanvi Garden City II', description: 'Ongoing residential layout on Bangalore-Krishnagiri Highway.' },
   },

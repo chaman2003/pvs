@@ -1,4 +1,5 @@
 import mongoose, { Schema, type Model } from 'mongoose';
+import type { ProjectVideoSlot } from '@/content/backup-project-media';
 
 export interface IProject {
   id: string;
@@ -18,6 +19,12 @@ export interface IProject {
   youtubeId?: string;
   videos?: string[];
   videoFiles?: string[];
+  /** Top inner-banner headline (coco backup titles). */
+  bannerTitle?: string;
+  /** Featured video above gallery. */
+  leadVideo?: ProjectVideoSlot;
+  /** Ordered poster tiles below gallery (duplicates allowed). */
+  videoGrid?: ProjectVideoSlot[];
   timeline?: { start: string; completion: string };
   details?: { area: string; units: string; rera: string };
   featured?: boolean;
@@ -43,6 +50,9 @@ const projectSchema = new Schema<IProject>(
     youtubeId: String,
     videos: [String],
     videoFiles: [String],
+    bannerTitle: String,
+    leadVideo: { id: String, poster: String },
+    videoGrid: [{ id: String, poster: String }],
     timeline: { start: String, completion: String },
     details: { area: String, units: String, rera: String },
     featured: Boolean,

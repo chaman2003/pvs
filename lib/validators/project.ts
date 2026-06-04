@@ -16,8 +16,21 @@ const projectFields = {
   videos: z.array(z.string()).optional(),
   videoFiles: z.array(z.string()).optional(),
   youtubeId: z.string().optional(),
-  seoTitle: z.string().optional(),
-  seoDescription: z.string().optional(),
+  bannerTitle: z.string().optional(),
+  leadVideo: z
+    .object({
+      id: z.string(),
+      poster: z.string().optional(),
+    })
+    .optional(),
+  videoGrid: z
+    .array(
+      z.object({
+        id: z.string(),
+        poster: z.string().optional(),
+      })
+    )
+    .optional(),
 };
 
 export const projectAddSchema = z.object(projectFields);

@@ -1,6 +1,7 @@
 import type { z } from 'zod';
 import type { projectAddSchema } from '@/lib/validators/project';
 import { slugify } from '@/lib/utils';
+import type { ProjectVideoSlot } from '@/content/backup-project-media';
 
 type ProjectInput = z.infer<typeof projectAddSchema>;
 
@@ -13,6 +14,9 @@ export function buildProjectPayload(data: ProjectInput) {
   const videoFiles = data.videoFiles?.filter(Boolean) ?? [];
   const image = gallery[0] || data.image || data.imageData || '';
 
+  const leadVideo = normalizeLeadVideo(data);
+  const videoGrid = normalizeVideoGrid(data);
+
   return {
     id: slug,
     title,
@@ -23,6 +27,9 @@ export function buildProjectPayload(data: ProjectInput) {
     image,
     gallery,
     category: data.category || 'Residential',
+    bannerTitle: data.bannerTitle || title,
+    leadVideo,
+    videoGrid,
     details: {
       area: data.plotSize || '',
       totalArea: data.totalArea || '',
@@ -30,16 +37,48 @@ export function buildProjectPayload(data: ProjectInput) {
     features: [] as string[],
     videos,
     videoFiles,
-    youtubeId: data.youtubeId || videos[0] || '',
-    ...(data.seoTitle || data.seoDescription
-      ? {
-          seo: {
-            title: data.seoTitle || title,
-            description: data.seoDescription || data.description || '',
-          },
-        }
-      : {}),
+    youtubeId: data.youtubeId || leadVideo?.id || videos[0] || '',
+    seo: {
+      title,
+      description: data.description || '',
+    },
   };
+}
+
+function normalizeLeadVideo(data: ProjectInput): ProjectVideoSlot | undefined {
+  if (data.leadVideo?.id) {
+    const gallery = normalizeGallery(data);
+    return {
+      id: data.leadVideo.id,
+      poster: data.leadVideo.poster || gallery[0] || data.image || data.imageData || '',
+    };
+  }
+  const id = data.youtubeId || data.videos?.[0];
+  if (!id) return undefined;
+  const gallery = normalizeGallery(data);
+  return {
+    id,
+    poster: gallery[0] || data.image || data.imageData || '',
+  };
+}
+
+function normalizeVideoGrid(data: ProjectInput): ProjectVideoSlot[] | undefined {
+  if (data.videoGrid?.length) {
+    const gallery = normalizeGallery(data);
+    const cover = gallery[0] || data.image || data.imageData || '';
+    return data.videoGrid.map((slot, i) => ({
+      id: slot.id,
+      poster: slot.poster || gallery[i % gallery.length] || cover,
+    }));
+  }
+  const videos = data.videos?.filter(Boolean);
+  if (!videos?.length) return undefined;
+  const gallery = normalizeGallery(data);
+  const cover = gallery[0] || data.image || data.imageData || '';
+  return videos.map((id, i) => ({
+    id,
+    poster: gallery[i % gallery.length] || cover,
+  }));
 }
 
 function normalizeGallery(data: ProjectInput): string[] {
@@ -75,21 +114,28 @@ export function buildProjectUpdatePayload(data: ProjectInput) {
     };
   }
 
+  if (data.bannerTitle !== undefined) payload.bannerTitle = data.bannerTitle;
+  if (data.leadVideo !== undefined) payload.leadVideo = data.leadVideo;
+  if (data.videoGrid !== undefined) payload.videoGrid = data.videoGrid;
+
   if (data.videos !== undefined) {
     payload.videos = data.videos.filter(Boolean);
-    payload.youtubeId = data.youtubeId || data.videos[0] || '';
+    payload.youtubeId = data.youtubeId || data.leadVideo?.id || data.videos[0] || '';
   } else if (data.youtubeId !== undefined) {
     payload.youtubeId = data.youtubeId;
+  } else if (data.leadVideo?.id) {
+    payload.youtubeId = data.leadVideo.id;
   }
 
   if (data.videoFiles !== undefined) {
     payload.videoFiles = data.videoFiles.filter(Boolean);
   }
 
-  if (data.seoTitle !== undefined || data.seoDescription !== undefined) {
+  const title = data.projectName || data.title;
+  if (title || data.description !== undefined) {
     payload.seo = {
-      title: data.seoTitle ?? '',
-      description: data.seoDescription ?? '',
+      title: title ?? '',
+      description: data.description ?? '',
     };
   }
 
