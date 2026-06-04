@@ -45,6 +45,11 @@ export function parseYoutubeList(raw: string): string[] {
   return [...new Set(ids)];
 }
 
+/** Standard YouTube poster URL (hqdefault is reliably available). */
+export function youtubeThumbnailUrl(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+}
+
 export function isUploadedVideoSrc(src: string): boolean {
   return (
     src.startsWith('/uploads/') ||

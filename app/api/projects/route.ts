@@ -6,7 +6,7 @@ import { projectAddSchema } from '@/lib/validators/project';
 import { buildProjectPayload } from '@/lib/project-payload';
 import { getAllProjects } from '@/lib/projects';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const projects = await getAllProjects();
   return NextResponse.json({ success: true, data: projects });
 }

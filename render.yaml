@@ -1,0 +1,30 @@
+# Render Blueprint for PVS Promoters (Next.js 15)
+# Apply from Dashboard: New > Blueprint > connect github.com/chaman2003/pvs
+services:
+  - type: web
+    name: pvs-promoters
+    runtime: docker
+    region: singapore
+    plan: starter
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    autoDeploy: true
+    disk:
+      name: project-uploads
+      mountPath: /app/public/uploads
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://pvs-promoters.com
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

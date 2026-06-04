@@ -9,6 +9,8 @@
     "lint": "eslint",
     "seed": "tsx scripts/seed-db.ts",
     "download-assets": "tsx scripts/download-assets.ts",
+    "copy-backup-images": "tsx scripts/copy-backup-project-images.ts",
+    "sync-coco-media": "tsx scripts/sync-coco-project-media.ts",
     "enhance-images": "tsx scripts/enhance-key-images.ts",
     "generate-favicon": "tsx scripts/generate-favicon.ts"
   },

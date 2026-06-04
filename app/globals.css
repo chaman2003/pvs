@@ -74,7 +74,12 @@ select:focus {
   outline: none;
 }
 
-/* Scroll reveal — content visible immediately; optional subtle motion when enabled */
+/* Motion — transform/opacity only (compositor-friendly, no overshoot) */
+:root {
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll reveal — visible by default; motion layers add entrance */
 .reveal {
   opacity: 1;
   transform: none;
@@ -87,16 +92,15 @@ select:focus {
 
 .reveal-motion {
   opacity: 0;
-  transform: translateY(0.75rem);
-  transition:
-    opacity 350ms ease-out,
-    transform 350ms ease-out;
-  will-change: opacity, transform;
+  transform: translate3d(0, 0.5rem, 0);
 }
 
 .reveal-motion.reveal-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 320ms var(--ease-out-smooth),
+    transform 320ms var(--ease-out-smooth);
 }
 
 /* Hero background slow zoom */
@@ -150,20 +154,20 @@ select:focus {
   animation: gentle-pulse 3s ease-in-out infinite;
 }
 
-/* Hero text quick fade on load (not scroll-triggered) */
-@keyframes fade-in-hero {
+/* Hero text entrance on load */
+@keyframes hero-fade-kf {
   from {
     opacity: 0;
-    transform: translateY(0.5rem);
+    transform: translate3d(0, 0.5rem, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.animate-fade-in-hero {
-  animation: fade-in-hero 300ms ease-out forwards;
+.animate-hero-fade {
+  animation: hero-fade-kf 320ms var(--ease-out-smooth) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -174,9 +178,9 @@ select:focus {
     transition: none;
   }
 
+  .animate-hero-fade,
   .animate-hero-zoom,
-  .animate-gentle-pulse,
-  .animate-fade-in-hero {
+  .animate-gentle-pulse {
     animation: none;
   }
 
@@ -188,3 +192,4 @@ select:focus {
     transform: none;
   }
 }
+

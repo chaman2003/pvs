@@ -5,6 +5,9 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { ProjectGallery } from '@/components/projects/ProjectGallery';
 import { ProjectImageWarmup } from '@/components/projects/ProjectImageWarmup';
 import { ProjectVideoGrid } from '@/components/projects/ProjectVideoGrid';
+import { getLeadVideo } from '@/content/backup-project-media';
+import { resolveProjectVideos } from '@/content/project-videos';
+import { ProjectLeadVideo } from '@/components/projects/ProjectLeadVideo';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { HeroBackground } from '@/components/motion/HeroBackground';
@@ -19,6 +22,8 @@ export function ProjectDetailView({
   project: IProject;
   related?: IProject[];
 }) {
+  const leadVideo = getLeadVideo(project.id);
+
   const galleryImages = (project.gallery?.length ? project.gallery : [project.image]).map(
     (src, i) => ({
       src,
@@ -102,6 +107,15 @@ export function ProjectDetailView({
             </div>
           </Reveal>
 
+          {leadVideo && (
+            <Reveal delay={50}>
+              <div>
+                <h2 className="font-headline text-xl font-bold text-primary mb-4">Project Video</h2>
+                <ProjectLeadVideo lead={leadVideo} title={project.title} />
+              </div>
+            </Reveal>
+          )}
+
           <Reveal delay={100}>
             <div>
               <h2 className="font-headline text-xl font-bold text-primary mb-4">Project Gallery</h2>
@@ -152,17 +166,22 @@ export function ProjectDetailView({
             </div>
           )}
 
-          {(project.videos?.length || project.videoFiles?.length || project.youtubeId) && (
+          {(project.videos?.length ||
+            project.videoFiles?.length ||
+            project.youtubeId) && (
             <div className="space-y-6">
               <h2 className="font-headline text-xl font-bold text-primary">Project Videos</h2>
               <ProjectVideoGrid
-                videos={[
-                  ...(project.videos?.length
-                    ? project.videos
-                    : project.youtubeId
-                      ? [project.youtubeId]
-                      : []),
-                  ...(project.videoFiles || []),
+                items={[
+                  ...resolveProjectVideos(
+                    project.id,
+                    project.videos?.length
+                      ? project.videos
+                      : project.youtubeId
+                        ? [project.youtubeId]
+                        : undefined
+                  ),
+                  ...(project.videoFiles || []).map((src) => ({ id: src })),
                 ]}
                 title={project.title}
               />

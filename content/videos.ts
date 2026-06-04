@@ -6,6 +6,7 @@ export const siteVideos = {
   walkthrough: { id: 'UiBCDHTRM2U', label: 'Site Walkthrough' },
 } as const;
 
+/** Legacy backup YouTube IDs per coco farmland project page. */
 export const projectVideos: Record<string, string[]> = {
   'phase-1': ['I8oYfqJXVz4', 'MFFPP6BPYik', 'UiBCDHTRM2U', 'WszjDmn56oo'],
   'phase-2': ['I8oYfqJXVz4', 'MFFPP6BPYik', 'UiBCDHTRM2U', 'WszjDmn56oo'],

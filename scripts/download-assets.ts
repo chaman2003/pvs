@@ -31,9 +31,26 @@ const FILES = [
   'img22.jpg',
   'img23.jpg',
   'img24.jpg',
+  'img2.jpg',
+  'img3.jpg',
+  'img7.jpg',
+  'img8.jpg',
+  'img15.jpg',
+  'img27.jpg',
+  'img28.jpg',
+  'img29.jpg',
+  'img30.jpg',
   'img76.jpg',
   'img77.jpg',
   'img78.jpg',
+  'gallery-img21.jpg',
+  'gallery-img22.jpg',
+  'gallery-img23.jpg',
+  'gallery-img24.jpg',
+  'gallery-img25.jpg',
+  'gallery-img26.jpg',
+  'gallery-img27.jpg',
+  'gallery-img28.jpg',
   'inner-banner-img-1.jpg',
   'author-img1.jpg',
   'author-img2.jpg',
@@ -84,7 +101,6 @@ async function main() {
   let fail = 0;
 
   for (const name of FILES) {
-    const url = `${BASE}/${encodeURIComponent(name).replace(/%20/g, '%20')}`;
     const dest = path.join(OUT, name);
     if (fs.existsSync(dest) && fs.statSync(dest).size > 0) {
       console.log(`skip ${name}`);

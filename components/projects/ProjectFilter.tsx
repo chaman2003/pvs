@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { ProjectCard } from './ProjectCard';
+import { Reveal } from '@/components/motion/Reveal';
 import type { IProject } from '@/lib/models/Project';
 import { cn } from '@/lib/utils';
 
@@ -39,7 +40,9 @@ export function ProjectFilter({ projects }: { projects: IProject[] }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         {filtered.map((p, i) => (
-          <ProjectCard key={p.id} project={p} index={i} />
+          <Reveal key={p.id} delay={(i % 3) * 80}>
+            <ProjectCard project={p} index={i} />
+          </Reveal>
         ))}
       </div>
       {filtered.length === 0 && (

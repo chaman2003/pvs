@@ -16,6 +16,7 @@ export function SiteImage({
   fetchPriority,
   unoptimized = true,
   decoding = 'async',
+  alt,
   ...props
 }: SiteImageProps) {
   const urgent = Boolean(critical ?? priority);
@@ -23,6 +24,7 @@ export function SiteImage({
   return (
     <Image
       {...props}
+      alt={alt ?? ''}
       unoptimized={unoptimized}
       priority={urgent}
       loading={urgent ? undefined : (loading ?? 'eager')}

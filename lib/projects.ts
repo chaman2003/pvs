@@ -2,12 +2,13 @@ import mongoose from 'mongoose';
 import { connectDB } from '@/lib/db/mongoose';
 import { Project, type IProject } from '@/lib/models/Project';
 import { seedProjects } from '@/content/seed-projects';
+import { serializeProject, serializeProjects } from '@/lib/serialize-project';
 
 export async function getAllProjects(): Promise<IProject[]> {
   try {
     await connectDB();
     const projects = await Project.find().lean();
-    if (projects.length > 0) return projects as IProject[];
+    if (projects.length > 0) return serializeProjects(projects);
   } catch {
     /* DB unavailable */
   }
@@ -24,7 +25,7 @@ export async function getProjectBySlug(slug: string): Promise<IProject | null> {
     if (!project) {
       project = await Project.findOne({ id: slug }).lean();
     }
-    if (project) return project as IProject;
+    if (project) return serializeProject(project);
   } catch {
     /* DB unavailable */
   }

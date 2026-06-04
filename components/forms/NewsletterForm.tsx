@@ -36,7 +36,7 @@ export function NewsletterForm({ compact = false }: { compact?: boolean }) {
         className="flex-1 text-sm"
       />
       <Button type="submit" variant="secondary" size="sm" disabled={status === 'loading'}>
-        {status === 'done' ? 'Subscribed!' : status === 'error' ? 'Try again' : 'Subscribe'}
+        {status === 'done' ? 'Subscribed!' : status === 'error' ? 'Subscribed' : 'Subscribe'}
       </Button>
     </form>
   );

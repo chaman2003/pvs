@@ -20,6 +20,12 @@ export function useInView({
     const el = ref.current;
     if (!el) return;
 
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setInView(true);
+      if (once) return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
